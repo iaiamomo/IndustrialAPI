@@ -11,11 +11,11 @@ import websockets
 from websocket import WebSocket
 from websockets.exceptions import ConnectionClosedOK
 
-from utils.wrappers import initialize_wrapper
-from things_api.client_wrapper import WebSocketWrapper
-from things_api.data import ServiceInstance
-from things_api.helpers import setup_logger
-from things_api.messages import Register, Message, ExecuteServiceAction, ExecutionResult, DoMaintenance
+from actors_api.wrappers import initialize_wrapper
+from actors_api.client_wrapper import WebSocketWrapper
+from actors_api.data import ServiceInstance
+from actors_api.helpers import setup_logger
+from actors_api.messages import Register, Message, ExecuteServiceAction, ExecutionResult, DoMaintenance
 
 
 class ServiceDevice:
@@ -31,11 +31,11 @@ class ServiceDevice:
     @classmethod
     def from_spec(cls, spec_path: Path, **kwargs) -> "ServiceDevice":
         data = json.loads(spec_path.read_text())
-        target_instance = ServiceInstance.from_json(data)
-        return ServiceDevice(target_instance)
+        service_instance = ServiceInstance.from_json(data)
+        return ServiceDevice(service_instance)
 
     async def async_main(self):
-        self.logger.info(f"Starting target '{self.service_instance.service_id}'...")
+        self.logger.info(f"Starting service '{self.service_instance.service_id}'...")
         async with websockets.connect(f"ws://{self.host}:{self.port}") as websocket:
             # register
             self.logger.info("Registering to server...")
