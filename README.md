@@ -6,18 +6,26 @@ Follow [template.json](actors_api/device_descriptions/template.json) to generate
 
 ## Instructions
 Run the HTTP server that acts as service repository and communication middleware:
->cd actors_api
->python app.py
+```sh
+cd actors_api
+python app.py
+```
 
 Run all the services (three possibilities):
->python launch_devices.py
->./run-all-services.sh      #if you want to use the bash script (linux)
->run-all-services.bat       #if you want to use the batch script (Windows)
+```sh
+python launch_devices.py
+./run-all-services.sh      #if you want to use the bash script (linux)
+run-all-services.bat       #if you want to use the batch script (Windows)
+```
 
 ## Preliminaries
 Install requirements:
->pip install -r requirements.txt
+```sh
+pip install -r requirements.txt
+```
 
 Generate Python client from OpenAPI v3.0 specification:
->./openapi_client_script/generate-openapi-client.sh     #if on linux
->./openapi_client_script/generate-openapi-client.bat    #if on Windows
+```sh
+./openapi_client_script/generate-openapi-client.sh     #if on linux
+./openapi_client_script/generate-openapi-client.bat    #if on Windows
+```
