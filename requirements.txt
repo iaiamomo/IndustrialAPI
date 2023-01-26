@@ -6,3 +6,4 @@ httpx==0.23.3
 websocket_client==1.4.2
 websockets==10.4
 openapi-python-client==0.13.1
+aiohttp-jinja2==1.5

@@ -4,7 +4,7 @@ import connexion
 from actors_api.server import server
 
 app = connexion.AioHttpApp(__name__, only_one_api=True)
-app.add_api('spec.yml')
+app.add_api('actors_api\spec.yml')
 # set the WSGI application callable to allow using uWSGI:
 # uwsgi --http :8080 -w app
 application = app.app

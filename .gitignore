@@ -1,5 +1,6 @@
 actors_api/client
-
+actors_api/device_descriptions/*.json
+!actors_api/device_descriptions/template.json
 
 
 ### Python ###
