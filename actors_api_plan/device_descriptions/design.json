@@ -1,0 +1,29 @@
+{
+    "id": "design",
+    "attributes": {
+        "type": "Design",
+        "taken": {
+            "properties": {
+                "type": "state",
+                "domain": "Object",
+                "value": {
+                    "type": "Boolean",
+                    "current": "false"
+                }
+            }
+        }
+    },
+    "features": {
+        "type": "Design",
+        "taken": {
+            "properties": {
+                "type": "state",
+                "domain": "Object",
+                "value": {
+                    "type": "Boolean",
+                    "current": "false"
+                }
+            }
+        }
+    }
+}

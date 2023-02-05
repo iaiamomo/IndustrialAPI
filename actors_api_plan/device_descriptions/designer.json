@@ -1,0 +1,45 @@
+{
+    "id": "designer",
+    "attributes": {
+        "type": "Service",
+        "transitions":{
+            "taking_design": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_design",
+                    "cost": 1,
+                    "parameters": [
+                        "Object - o",
+                        "Location - l"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "o.at:l",
+                            "at:l"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "o.taken:true"
+                        ],
+                        "deleted": [
+                            "o.taken:false"
+                        ]
+                    }
+                }
+            }
+        },
+        "status":{
+            "properties": {
+                "value": "waiting"
+            }                    
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "waiting"
+            }                    
+        }   
+    }
+}
