@@ -5,11 +5,9 @@ from typing import List
 from websocket import WebSocket
 
 from actors_api_plan.client import Client
-from actors_api_plan.client.api.health.app_server_api_get_health import asyncio_detailed as get_health
 from actors_api_plan.client.api.services.app_server_api_get_services import asyncio_detailed as get_services
 from actors_api_plan.client.api.services.app_server_api_execute_service_action import asyncio_detailed as execute_service_action
 from actors_api_plan.client.api.services.app_server_api_get_service import asyncio_detailed as get_service
-from actors_api_plan.client.api.services.app_server_api_do_maintenance import asyncio_detailed as do_maintenance
 from actors_api_plan.client.models import Service
 
 from actors_api_plan.actor import Actor
@@ -32,11 +30,6 @@ class ClientWrapper:
     def base_url(self) -> str:
         """Initialize the base URL."""
         return f"http://{self._host}:{self._port}"
-
-    async def get_health(self):
-        """Get the /health of the service."""
-        response = await get_health(client=self._client)
-        return response
 
     async def get_services(self) -> List[Actor]:
         """Get all the services."""
