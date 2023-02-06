@@ -2,7 +2,7 @@
     "id": "designer",
     "attributes": {
         "type": "Service",
-        "transitions":{
+        "actions": {
             "taking_design": {
                 "properties": {
                     "type": "operation",
@@ -28,18 +28,13 @@
                     }
                 }
             }
-        },
-        "status":{
-            "properties": {
-                "value": "waiting"
-            }                    
         }
     },
     "features": {
         "status":{
             "properties": {
                 "value": "waiting"
-            }                    
-        }   
+            }
+        }
     }
 }

@@ -2,13 +2,13 @@
 
 :: remove previous output if any
 echo y|rmdir /s industrial-api-client
-echo y|rmdir /s ../actors_api/client
+echo y|rmdir /s ../client
 
 :: generate new client
-openapi-python-client generate --path ../actors_api/spec.yml
+openapi-python-client generate --path ../spec.yml
 
 :: move generate Python package as a subpackage of ours
-move industrial-api-client/industrial_api_client ../actors_api/client
+move industrial-api-client/industrial_api_client ../client
 
 :: remove temporary output
 echo y|rmdir /s industrial-api-client

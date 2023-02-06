@@ -1,67 +1,57 @@
 import dataclasses
-from enum import Enum
 from typing import Any, Dict
 
-from actors_api_plan.helpers import ServiceId
-from actors_api_plan.services import Service, build_service_from_transitions
-from actors_api_plan.types import TransitionFunctionReward
+from actors_api_plan.actor import Actor, build_actor_from_json
 
 
-class ServiceType(Enum):
-    SERVICE = "service"
-    TARGET = "target"
-
-
+@dataclasses.dataclass(eq=True)
 class ServiceInstance:
-    service_id: ServiceId
-    service_spec: Service
+    service_id: str
+    service_spec: Actor
     current_state: Any
-    transition_function: TransitionFunctionReward
+    actions: Dict[str, Any]
+    attributes: Dict
 
-    def from_json(cls, obj: Dict) -> "ServiceInstance":
-        """Get the service instance from JSON format."""
-        service_id = ServiceId(obj["id"])
-        service_type = ServiceType(obj["attributes"]["type"])
-        assert service_type == ServiceType.SERVICE
+    @classmethod
+    def from_json(cls, data: Dict) -> "ServiceInstance":
+        """Get the actor from JSON format."""
+        service_id = data["id"]
+        service_spec = build_actor_from_json(data)
+        current_state = service_spec.current_state
+        actions = service_spec.actions
 
-        current_transition_function = obj["features"]["transition_function"]
-        current_state = obj["features"]["current_state"]
+        attributes = data["attributes"]
 
-        transitions = obj["attributes"]["transitions"]
-        initial_state = obj["attributes"]["initial_state"]
-        final_states = set(obj["attributes"]["final_states"])
-        service = build_service_from_transitions(transitions, initial_state, final_states)
         return ServiceInstance(
             service_id,
-            service,
+            service_spec,
             current_state,
-            current_transition_function
+            actions,
+            attributes
         )
 
+
+    @property
     def json(self) -> Dict:
         """Get the service instance in JSON format."""
         result = dict()
 
         result["id"] = str(self.service_id)
-        result["features"] = dict(
-            transition_function=self.transition_function,
-            current_state=self.current_state
-        )
-        result["attributes"] = dict(
-            type=ServiceType.SERVICE.value,
-            transitions=self.service_spec.transition_function,
-            initial_state=self.service_spec.initial_state,
-            final_states=sorted(self.service_spec.final_states)
-        )
+        result["features"] = {
+            "status": {
+                "properties": {
+                    "value": self.current_state
+                }
+            }
+        }
+        result["attributes"] = self.attributes
         return result
 
-    def current_service_spec(self):
-        return Service(
-            self.service_spec.states,
-            self.service_spec.actions,
-            self.service_spec.final_states,
-            self.service_spec.initial_state,
-            self.transition_function
-        )
+    
+    def updateState(self, update):
+        state = update["state"]
+        value = update["value"]
 
-
+        if state == self.current_state.keys()[0]:
+            self.current_state[state]["properties"]["value"] = value
+            self.service_spec.current_state[state]["properties"]["value"] = value

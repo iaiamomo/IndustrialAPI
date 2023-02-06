@@ -4,13 +4,13 @@
 
 # remove previous output if any
 /bin/rm -rf industrial-api-client
-/bin/rm -rf ../actors_api/client
+/bin/rm -rf ../client
 
 # generate new client
-openapi-python-client generate --path ../actors_api/spec.yml
+openapi-python-client generate --path ../spec.yml
 
 # move generate Python package as a subpackage of ours
-mv industrial-api-client/industrial_api_client ../actors_api/client
+mv industrial-api-client/industrial_api_client ../client
 
 # remove temporary output
 /bin/rm -rf industrial-api-client

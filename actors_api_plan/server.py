@@ -1,6 +1,5 @@
 import asyncio
 import json
-import logging
 import signal
 from asyncio import AbstractEventLoop, CancelledError
 from functools import singledispatchmethod
@@ -13,27 +12,29 @@ from websockets.exceptions import ConnectionClosedOK
 
 from actors_api_plan.client_wrapper import WebSocketWrapper
 from actors_api_plan.data import ServiceInstance
-from actors_api_plan.helpers import ServiceId, setup_logger
+from actors_api_plan.actor import Action
+from actors_api_plan.helpers import setup_logger
 from actors_api_plan.messages import from_json, Message, Register, Update, \
-    ExecuteServiceAction, ExecutionResult, DoMaintenance
+    ExecuteServiceAction, ExecutionResult
 
 
 logger = setup_logger(name="server")
 
 
+
 class ServiceRegistry:
     def __init__(self):
-        self.services: Dict[ServiceId, ServiceInstance] = {}
-        self.sockets_by_service_id: Dict[ServiceId, WebSocket] = {}
-        self.service_id_by_sockets: Dict[WebSocket, ServiceId] = {}
+        self.services: Dict[str, ServiceInstance] = {}
+        self.sockets_by_service_id: Dict[str, WebSocket] = {}
+        self.service_id_by_sockets: Dict[WebSocket, str] = {}
 
-    def has_service(self, service_id: ServiceId) -> bool:
+    def has_service(self, service_id: str) -> bool:
         return service_id in self.services
 
     def get_services(self) -> List[ServiceInstance]:
         return list(self.services.values())
 
-    def get_service(self, service_id: ServiceId) -> Optional[ServiceInstance]:
+    def get_service(self, service_id: str) -> Optional[ServiceInstance]:
         return self.services.get(service_id, None)
 
     def add_service(self, service_instance: ServiceInstance, socket: WebSocket):
@@ -43,14 +44,15 @@ class ServiceRegistry:
         self.sockets_by_service_id[service_instance.service_id] = socket
         self.service_id_by_sockets[socket] = service_instance.service_id
 
-    def remove_service(self, service_id: ServiceId):
+    def remove_service(self, service_id: str):
         self.services.pop(service_id)
         socket = self.sockets_by_service_id.pop(service_id)
         self.service_id_by_sockets.pop(socket)
 
-    def update_service(self, service_id: ServiceId, service_instance: ServiceInstance) -> None:
+    def update_service(self, service_id: str, service_instance: ServiceInstance) -> None:
         assert self.has_service(service_id)
         self.services[service_id] = service_instance
+
 
 
 class WebsocketServer:
@@ -87,7 +89,7 @@ class WebsocketServer:
             raw_message = await websocket.recv()
             message_json = json.loads(raw_message)
             message = from_json(message_json)
-            assert isinstance(message, (Register))
+            assert isinstance(message, (Register)) # register the service
             await self._handle(message, websocket)
             # don't close connection - communcation is handled elsewhere
             while True:
@@ -136,10 +138,9 @@ class WebsocketServer:
         self._thread.join()
 
 
-# definition of the api
+
 class Api:
-    
-    SERVICES: Dict[ServiceId, ServiceInstance] = {}
+    SERVICES: Dict[str, ServiceInstance] = {}
 
     def __init__(self, websocket_server: WebsocketServer):
         self.websocket_server = websocket_server
@@ -152,17 +153,13 @@ class Api:
         kwargs = kwargs if kwargs is not None else {}
         logger.info(f"Called '{func_name}' with args: {kwargs}")
 
-    async def get_health(self):
-        self._log_call(self.get_health.__name__)
-        return "Healthy"
-
     async def get_services(self):
         self._log_call(self.get_services.__name__)
         return [service.json for service in self.registry.get_services()], 200
 
     async def get_service(self, service_id: str):
         self._log_call(self.get_service.__name__, dict(service_id=service_id))
-        service_id = ServiceId(service_id)
+        service_id = str(service_id)
         result = self.registry.get_service(service_id)
         if result is None:
             return f'Service with id {service_id} not found', 404
@@ -170,39 +167,39 @@ class Api:
 
     async def execute_service_action(self, service_id: str, body: str):
         self._log_call(self.execute_service_action.__name__, dict(service_id=service_id, body=body))
-        action_name = body
-        service_id = ServiceId(service_id)
+        actionBody = body
+        service_id = str(service_id)
         service = self.registry.get_service(service_id)
         if service is None:
             return f'Service with id {service_id} not found', 404
-        websocket = self.registry.sockets_by_service_id[service_id]
-        request = ExecuteServiceAction(action_name)
+
+        command = actionBody["command"]
+        service_name = actionBody["service_id"]
+        parameters = actionBody["parameters"]
+        assert service_name == service_id
+
+        service_instance = self.registry.get_service(service_id)
+        action: Action = service_instance.actions[command]
+        actionResult = action.get_result_action(parameters)
+        if actionResult is None:
+            return f'Error in finding effect of action {command}', 404
+
+        # invio modifica dello stato
+        serviceToCall = actionResult["service_id"]
+        websocket = self.registry.sockets_by_service_id[serviceToCall]
+        request = ExecuteServiceAction(actionResult)
         await WebSocketWrapper.send_message(websocket, request)
 
         # waiting reply from service
         response = await WebSocketWrapper.recv_message(websocket)
         assert response.TYPE == ExecutionResult.TYPE
 
-        execution_result = cast(ExecutionResult, response)
-        service.current_state = execution_result.new_state
-        service.transition_function = execution_result.transition_function
         return "", 200
-
-    async def do_maintenance(self):
-        self._log_call(self.do_maintenance.__name__)
-        for service_id, service in self.registry.services.items():
-            logger.info(f"sending maintenance request to service '{service_id}'")
-            message = DoMaintenance()
-            websocket = self.registry.sockets_by_service_id[service_id]
-            await WebSocketWrapper.send_message(websocket, message)
-            logger.info(f"resetting transition function for '{service_id}'")
-            service.transition_function = service.service_spec.transition_function
-
 
 
 
 class Server:
-    SERVICES: Dict[ServiceId, ServiceInstance] = {}
+    SERVICES: Dict[str, ServiceInstance] = {}
 
     def __init__(self, http_port: int = 8080, websocket_port: int = 8765, loop: Optional[AbstractEventLoop] = None):
         """Initialize the API service."""
@@ -232,6 +229,7 @@ class Server:
         self._overwrite_sigint_handler()
         task = self._loop.create_task(self._server.serve())
         app.run(port=port, debug=True, loop=self._loop)
+
 
 
 server = Server(loop=asyncio.get_event_loop())

@@ -11,8 +11,8 @@ from actors_api_plan.client.api.services.app_server_api_execute_service_action i
 from actors_api_plan.client.api.services.app_server_api_get_service import asyncio_detailed as get_service
 from actors_api_plan.client.api.services.app_server_api_do_maintenance import asyncio_detailed as do_maintenance
 from actors_api_plan.client.models import Service
-from actors_api_plan.data import ServiceInstance
-from actors_api_plan.helpers import ServiceId
+
+from actors_api_plan.actor import Actor
 from actors_api_plan.messages import Message, from_json, to_json
 
 TIMEOUT = 60.0
@@ -38,27 +38,23 @@ class ClientWrapper:
         response = await get_health(client=self._client)
         return response
 
-    async def get_services(self) -> List[ServiceInstance]:
+    async def get_services(self) -> List[Actor]:
         """Get all the services."""
         response = await get_services(client=self._client)
         result: List[Service] = response.parsed
-        to_our_model = [ServiceInstance.from_json(service.to_dict()) for service in result]
+        to_our_model = [Actor.from_json(service.to_dict()) for service in result]
         return to_our_model
 
-    async def get_service(self, service_id: ServiceId) -> ServiceInstance:
+    async def get_service(self, service_id: str) -> Actor:
         """Get all the services."""
         response = await get_service(service_id, client=self._client)
-        return ServiceInstance.from_json(response.parsed.to_dict())
+        return Actor.from_json(response.parsed.to_dict())
 
-    async def execute_service_action(self, service_id: ServiceId, action: str) -> None:
+    async def execute_service_action(self, service_id: str, action: str) -> None:
         """Execute service action."""
         response = await execute_service_action(service_id, json_body=action, client=self._client)
         return response.parsed
-
-    async def do_maintenance(self) -> None:
-        """Do maintenance."""
-        response = await do_maintenance(client=self._client)
-        return response.parsed
+        
 
 
 class WebSocketWrapper:

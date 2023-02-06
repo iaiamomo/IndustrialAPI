@@ -3,47 +3,29 @@ from typing import Dict
 
 from actors_api_plan.data import ServiceInstance
 
-
 class Message:
-
     TYPE: str   # variable
 
-
 class Register(Message):
-
     TYPE = "register"
-
     def __init__(self, service_instance: ServiceInstance) -> None:
         self.service_instance = service_instance
-
 
 class Update(Message):
-
     TYPE = "update"
-
     def __init__(self, service_instance: ServiceInstance) -> None:
         self.service_instance = service_instance
 
-
 class ExecuteServiceAction(Message):
-
     TYPE = "execute_service_action"
-
-    def __init__(self, action: str) -> None:
-        self.action = action
-
+    def __init__(self, serviceAction: str) -> None:
+        self.action = serviceAction
 
 class ExecutionResult(Message):
-
     TYPE = "execution_result"
+    def __init__(self, update: str) -> None:
+        self.update = update
 
-    def __init__(self, new_state: str) -> None:
-        self.new_state = new_state
-
-
-class DoMaintenance(Message):
-
-    TYPE = "do_maintenance"
 
 
 def from_json(obj: Dict) -> Message:
@@ -61,9 +43,7 @@ def from_json(obj: Dict) -> Message:
         case ExecuteServiceAction.TYPE:
             return ExecuteServiceAction(payload["action"])
         case ExecutionResult.TYPE:
-            return ExecutionResult(payload["state"], payload["transition_function"])
-        case DoMaintenance.TYPE:
-            return DoMaintenance()
+            return ExecutionResult(payload["update"])
 
     raise ValueError(f"message type {message_type} not expected")
 
@@ -93,7 +73,7 @@ def update_to_json(message: Update):
 def execute_service_action_to_json(message: ExecuteServiceAction):
     return dict(
         type=message.TYPE,
-        payload=dict(action=message.action)
+        payload=dict(action=message.action, )
     )
 
 
@@ -102,15 +82,8 @@ def execute_ack_to_json(message: ExecutionResult):
     return dict(
         type=message.TYPE,
         payload=dict(
-            state=message.new_state,
-            transition_function=message.transition_function
+            update=message.update
         )
     )
 
 
-@to_json.register
-def do_maintenance_to_json(message: DoMaintenance):
-    return dict(
-        type=message.TYPE,
-        payload=dict()
-    )
