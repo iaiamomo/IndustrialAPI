@@ -14,6 +14,6 @@ def setup_logger(name: Optional[str] = None):
     return logger
 
 def get_type_service(service_id: str) -> str:
-    response = requests.get(f"http://localhost:8080/actors_api/v1/services/{service_id}")
+    response = requests.get(f"http://localhost:8080/services/{service_id}")
     actor = json.loads(response.text)
     return actor["attributes"]["type"]
