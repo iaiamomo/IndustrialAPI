@@ -200,11 +200,13 @@ class Api:
 
         # update service of server
         service_instance = self.registry.get_service(service_id_updated)
-        service_instance.updateState({"state": state_updated, "value": result_updated})
+        deleted = service_instance.updateState({"state": state_updated, "value": result_updated})
+        state_deleted = deleted["state"]
+        result_deleted = deleted["value"]
 
         messageToReturn = {
             "value": "terminated",
-            "output": f"{service_id_updated}.{state_updated}:{result_updated}"
+            "output": {"added": [f"{service_id_updated}.{state_updated}:{result_updated}"], "deleted": [f"{service_id_updated}.{state_deleted}:{result_deleted}"]}
         }
 
         return messageToReturn, 200

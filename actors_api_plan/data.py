@@ -48,9 +48,12 @@ class ServiceInstance:
         state = update["state"]
         value = update["value"]
         if state in self.current_state.keys():
+            deleted = {"state": state, "value": self.current_state[state]["properties"]["value"]}
             self.current_state[state]["properties"]["value"] = value
             self.service_spec.current_state[state]["properties"]["value"] = value
             self.features[state]["properties"]["value"] = value
+            return deleted
+        return None
 
     
     def getAction(self, command) -> Action:
