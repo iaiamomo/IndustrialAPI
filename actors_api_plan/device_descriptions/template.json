@@ -1,37 +1,38 @@
-{"thing":{
-    "thingId":"cnv1",
-    "attributes":{
-      "type":"Service"},
-    "features":{
-      "converting":{
-        "properties":{
-          "type":"operation",
-          "command":"convert",
-          "cost":1,
-          "parameters":[
-            "Object - o",
-            "Location - l"],
-          "requirements":{
-            "positive":[
-              "at:l",
-              "o.at:l"]},
-          "effects":{
-            "added":[
-              "o.heated:true",
-              "o.processed:true",
-              "o.cooled:true"]}}},
-      "at":{
-        "properties":{
-          "type":"state",
-          "value":{
-            "type":"Location",
-            "current":"l20"}}},
+{
+  "id": "designerusa",
+  "attributes": {
+      "type": "Service",
+      "actions": {
+          "taking_design": {
+              "properties": {
+                  "type": "operation",
+                  "command": "take_design",
+                  "cost": 1,
+                  "parameters": [
+                      "Object - o"
+                  ],
+                  "requirements": {
+                      "positive": [
+                          "o.taken:false"
+                      ]
+                  },
+                  "effects": {
+                      "added": [
+                          "o.taken:true"
+                      ],
+                      "deleted": [
+                          "o.taken:false"
+                      ]
+                  }
+              }
+          }
+      }
+  },
+  "features": {
       "status":{
-        "properties":{
-          "value":"waiting"}},
-      "temperature":{
-        "properties":{
-          "value":600}},
-      "voltage":{
-        "properties":{
-          "value":120}}}}}
+          "properties": {
+              "value": "waiting"
+          }
+      }
+  }
+}
