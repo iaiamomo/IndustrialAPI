@@ -12,8 +12,3 @@ def setup_logger(name: Optional[str] = None):
     handler.setFormatter(formatter)
     logger.addHandler(handler)
     return logger
-
-def get_type_service(service_id: str) -> str:
-    response = requests.get(f"http://localhost:8080/services/{service_id}")
-    actor = json.loads(response.text)
-    return actor["attributes"]["type"]

@@ -179,8 +179,8 @@ class Api:
         assert service_name == service_id
 
         service_instance = self.registry.get_service(service_id)
-        action: Action = service_instance.actions[command]
-        actionResult = action.get_result_action(parameters)
+        action: Action = service_instance.getAction(command)
+        actionResult = action.get_result_action(self.registry, parameters)
         if actionResult is None:
             return f'Error in finding effect of action {command}', 404
 
@@ -191,10 +191,23 @@ class Api:
         await WebSocketWrapper.send_message(websocket, request)
 
         # waiting reply from service
-        response = await WebSocketWrapper.recv_message(websocket)
+        response: ExecutionResult = await WebSocketWrapper.recv_message(websocket)
         assert response.TYPE == ExecutionResult.TYPE
+        message = response.update
+        service_id_updated = message["service_id"]
+        state_updated = message["state"]
+        result_updated = message["result"]
 
-        return "", 200
+        # update service of server
+        service_instance = self.registry.get_service(service_id_updated)
+        service_instance.updateState({"state": state_updated, "value": result_updated})
+
+        messageToReturn = {
+            "value": "terminated",
+            "output": f"{service_id_updated}.{state_updated}:{result_updated}"
+        }
+
+        return messageToReturn, 200
 
 
 
