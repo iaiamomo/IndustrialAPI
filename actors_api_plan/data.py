@@ -8,7 +8,7 @@ from actors_api_plan.actor import Actor, Action, build_actor_from_json
 class ServiceInstance:
     service_id: str
     service_spec: Actor
-    current_state: Any
+    current_state: Dict
     actions: Dict[str, Any]
     attributes: Dict
     features: Dict

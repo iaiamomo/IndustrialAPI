@@ -73,24 +73,29 @@ class Action:
 
     def get_result_action(self, registry , parameters: List[str]):
         """Check if the action is conform to the action."""
+        update = []
         name_param = ""
-        for i in range(len(parameters)): #l'ordine dei parametri è uguale a quello dei parametri dell'azione
+        for i in range(len(parameters)):
             paramService = registry.get_service(parameters[i])
             serv_type = paramService.service_spec.service_type
             serv_subtype = paramService.service_spec.service_subtype
-            if serv_type in self.parameters[i] or serv_subtype in self.parameters[i]:
-                name_param = self.parameters[i].split(" - ")[1]
-                addedEffect = self.effects["added"]
-                for effect in addedEffect:
-                    effectTokens = effect.split(":")
-                    paramEffect = effectTokens[0].split(".")
-                    nameParamEffect = paramEffect[0]
-                    if nameParamEffect == name_param:
-                        stateParamEffect = paramEffect[1]
-                        resultParamEffect = effectTokens[1]
-                        update = {"service_id": parameters[i], "state": stateParamEffect, "result": resultParamEffect}
-                        return update
-        return None
+            for j in range(len(self.parameters)):
+                if serv_type in self.parameters[j]:
+                    name_param = self.parameters[j].split(" - ")[1]
+                    addedEffect = self.effects["added"]
+                    for effect in addedEffect:
+                        effectTokens = effect.split(":")
+                        paramEffect = effectTokens[0].split(".")
+                        nameParamEffect = paramEffect[0]
+                        if nameParamEffect == name_param:
+                            stateParamEffect = paramEffect[1]
+                            resultParamEffect = effectTokens[1]
+                            update.append({"service_id": parameters[i], "state": stateParamEffect, "result": resultParamEffect})
+        for elem in update:
+            #remove duplicates from a list
+            while update.count(elem) > 1:
+                update.remove(elem)
+        return update
 
 
 def build_action_from_json(name, data) -> "Action":

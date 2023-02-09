@@ -165,6 +165,15 @@ class Api:
             return f'Service with id {service_id} not found', 404
         return result.json, 200
 
+    async def break_service(self, service_id: str):
+        self._log_call(self.break_service.__name__, dict(service_id=service_id))
+        service_id = str(service_id)
+        result = self.registry.get_service(service_id)
+        if result is None:
+            return f'Service with id {service_id} not found', 404
+        result.current_state["status"]["properties"]["value"] = "broken"
+        return result.json, 200
+
     async def execute_service_action(self, service_id: str, body: str):
         self._log_call(self.execute_service_action.__name__, dict(service_id=service_id, body=body))
         actionBody = body
@@ -173,40 +182,61 @@ class Api:
         if service is None:
             return f'Service with id {service_id} not found', 404
 
-        command = actionBody["command"]
-        service_name = actionBody["service_id"]
-        parameters = actionBody["parameters"]
-        assert service_name == service_id
+        # check if the status of the service is available or broken
+        contain = "status" in service.current_state
+        print(service_id)
+        print(service.current_state)
+        print(contain)
+        if contain and service.current_state["status"]["properties"]["value"] == "available":
+            command = actionBody["command"]
+            service_name = actionBody["service_id"]
+            parameters = actionBody["parameters"]
+            assert service_name == service_id
 
-        service_instance = self.registry.get_service(service_id)
-        action: Action = service_instance.getAction(command)
-        actionResult = action.get_result_action(self.registry, parameters)
-        if actionResult is None:
-            return f'Error in finding effect of action {command}', 404
+            service_instance = self.registry.get_service(service_id)
+            action: Action = service_instance.getAction(command)
+            actionResult = action.get_result_action(self.registry, parameters)
+            if actionResult == {}:
+                return f'Error in finding effect of action {command}', 404
 
-        # invio modifica dello stato
-        serviceToCall = actionResult["service_id"]
-        websocket = self.registry.sockets_by_service_id[serviceToCall]
-        request = ExecuteServiceAction(actionResult)
-        await WebSocketWrapper.send_message(websocket, request)
+            added_param = []
+            deleted_param = []
+            for actionRes in actionResult:
+                # invio modifica dello stato
+                serviceToCall = actionRes["service_id"]
+                websocket = self.registry.sockets_by_service_id[serviceToCall]
+                request = ExecuteServiceAction(actionRes)
+                await WebSocketWrapper.send_message(websocket, request)
 
-        # waiting reply from service
-        response: ExecutionResult = await WebSocketWrapper.recv_message(websocket)
-        assert response.TYPE == ExecutionResult.TYPE
-        message = response.update
-        service_id_updated = message["service_id"]
-        state_updated = message["state"]
-        result_updated = message["result"]
+                # waiting reply from service
+                response: ExecutionResult = await WebSocketWrapper.recv_message(websocket)
+                assert response.TYPE == ExecutionResult.TYPE
+                message = response.update
+                #check if status is broken
+                if message["state"] == "status" and message["result"] == "broken":
+                    added_param = ["broken"]
+                    deleted_param = []
+                    break
+                else:
+                    service_id_updated = message["service_id"]
+                    state_updated = message["state"]
+                    result_updated = message["result"]
 
-        # update service of server
-        service_instance = self.registry.get_service(service_id_updated)
-        deleted = service_instance.updateState({"state": state_updated, "value": result_updated})
-        state_deleted = deleted["state"]
-        result_deleted = deleted["value"]
+                    # update service of server
+                    service_instance = self.registry.get_service(service_id_updated)
+                    deleted = service_instance.updateState({"state": state_updated, "value": result_updated})
+                    state_deleted = deleted["state"]
+                    result_deleted = deleted["value"]
+
+                    added_param.append(f"{service_id_updated}.{state_updated}:{result_updated}")
+                    deleted_param.append(f"{service_id_updated}.{state_deleted}:{result_deleted}")
+        else:
+            added_param = [f"{service.service_id}.status:broken"]
+            deleted_param = []
 
         messageToReturn = {
             "value": "terminated",
-            "output": {"added": [f"{service_id_updated}.{state_updated}:{result_updated}"], "deleted": [f"{service_id_updated}.{state_deleted}:{result_deleted}"]}
+            "output": {"added": added_param, "deleted": deleted_param}
         }
 
         return messageToReturn, 200
