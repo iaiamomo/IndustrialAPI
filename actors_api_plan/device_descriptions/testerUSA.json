@@ -1,0 +1,44 @@
+{
+    "id": "testerusa",
+    "attributes": {
+        "type": "Service",
+        "actions": {
+            "testing": {
+                "properties": {
+                    "type": "operation",
+                    "command": "test",
+                    "cost": 1,
+                    "parameters": [
+                        "Material - w"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "w.assembled:true",
+                            "w.tested:false"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "w.tested:true"
+                        ],
+                        "deleted": [
+                            "w.tested:false"
+                        ]
+                    }
+                }
+            }
+        },
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

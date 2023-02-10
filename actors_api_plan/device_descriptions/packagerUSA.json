@@ -1,0 +1,44 @@
+{
+    "id": "packagerusa",
+    "attributes": {
+        "type": "Service",
+        "actions": {
+            "packaging": {
+                "properties": {
+                    "type": "operation",
+                    "command": "pack",
+                    "cost": 1,
+                    "parameters": [
+                        "Material - w"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "w.tested:true",
+                            "w.packed:false"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "w.packed:true"
+                        ],
+                        "deleted": [
+                            "w.packed:false"
+                        ]
+                    }
+                }
+            }
+        },
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

@@ -1,0 +1,56 @@
+{
+    "id": "implanterusa",
+    "attributes": {
+        "type": "Service",
+        "actions": {
+            "implanting": {
+                "properties": {
+                    "type": "operation",
+                    "command": "implant",
+                    "cost": 1,
+                    "parameters": [
+                        "Material - w",
+                        "BoronMaterial - b",
+                        "PhosphorMaterial - p",
+                        "SiliconMaterial - s"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "w.etched:true",
+                            "w.implanted:false",
+                            "b.implanted:false",
+                            "p.implanted:false",
+                            "s.implanted:false"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "w.implanted:true",
+                            "b.implanted:true",
+                            "p.implanted:true",
+                            "s.implanted:true"
+                        ],
+                        "deleted": [
+                            "w.implanted:false",
+                            "b.implanted:false",
+                            "p.implanted:false",
+                            "s.implanted:false"
+                        ]
+                    }
+                }
+            }
+        },
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

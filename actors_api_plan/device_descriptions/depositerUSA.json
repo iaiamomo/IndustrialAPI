@@ -1,0 +1,44 @@
+{
+    "id": "depositerusa",
+    "attributes": {
+        "type": "Service",
+        "actions": {
+            "depositing": {
+                "properties": {
+                    "type": "operation",
+                    "command": "deposit",
+                    "cost": 1,
+                    "parameters": [
+                        "Material - w"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "w.cleaned:true",
+                            "w.deposited:false"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "w.deposited:true"
+                        ],
+                        "deleted": [
+                            "w.deposited:false"
+                        ]
+                    }
+                }
+            }
+        },
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

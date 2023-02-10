@@ -1,0 +1,44 @@
+{
+    "id": "assemblerusa",
+    "attributes": {
+        "type": "Service",
+        "actions": {
+            "assembling": {
+                "properties": {
+                    "type": "operation",
+                    "command": "assemble",
+                    "cost": 1,
+                    "parameters": [
+                        "Material - w"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "w.stripped:true",
+                            "w.assembled:false"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "w.assembled:true"
+                        ],
+                        "deleted": [
+                            "w.assembled:false"
+                        ]
+                    }
+                }
+            }
+        },
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

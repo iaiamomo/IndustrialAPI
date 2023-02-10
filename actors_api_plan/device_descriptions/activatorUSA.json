@@ -1,0 +1,50 @@
+{
+    "id": "activatorusa",
+    "attributes": {
+        "type": "Service",
+        "actions": {
+            "activating": {
+                "properties": {
+                    "type": "operation",
+                    "command": "activate",
+                    "cost": 1,
+                    "parameters": [
+                        "BoronMaterial - b",
+                        "PhosphorMaterial - p",
+                        "SiliconMaterial - s",
+                        "Material - w"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "b.implanted:true",
+                            "p.implanted:true",
+                            "s.implanted:true",
+                            "w.implanted:true",
+                            "w.activated:false"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "w.activated:true"
+                        ],
+                        "deleted": [
+                            "w.activated:false"
+                        ]
+                    }
+                }
+            }
+        },
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

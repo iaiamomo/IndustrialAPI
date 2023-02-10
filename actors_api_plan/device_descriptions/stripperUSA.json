@@ -1,0 +1,44 @@
+{
+    "id": "stripperusa",
+    "attributes": {
+        "type": "Service",
+        "actions": {
+            "stripping": {
+                "properties": {
+                    "type": "operation",
+                    "command": "strip",
+                    "cost": 1,
+                    "parameters": [
+                        "Material - w"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "w.activated:true",
+                            "w.stripped:false"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "w.stripped:true"
+                        ],
+                        "deleted": [
+                            "w.stripped:false"
+                        ]
+                    }
+                }
+            }
+        },
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

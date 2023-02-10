@@ -1,0 +1,44 @@
+{
+    "id": "coaterusa",
+    "attributes": {
+        "type": "Service",
+        "actions": {
+            "coating": {
+                "properties": {
+                    "type": "operation",
+                    "command": "coat",
+                    "cost": 1,
+                    "parameters": [
+                        "Material - w"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "w.deposited:true",
+                            "w.coated:false"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "w.coated:true"
+                        ],
+                        "deleted": [
+                            "w.coated:false"
+                        ]
+                    }
+                }
+            }
+        },
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}
