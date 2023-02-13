@@ -88,7 +88,8 @@
                     "requirements": {
                         "positive": [
                             "d.taken:true",
-                            "w.taken:false"
+                            "w.taken:false",
+                            "status:available"
                         ]
                     },
                     "effects": {
@@ -100,11 +101,6 @@
                         ]
                     }
                 }
-            }
-        },
-        "status":{
-            "properties": {
-                "value": "available"
             }
         }
     },

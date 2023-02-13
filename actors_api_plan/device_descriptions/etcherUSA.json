@@ -14,7 +14,8 @@
                     "requirements": {
                         "positive": [
                             "w.developed:true",
-                            "w.etched:false"
+                            "w.etched:false",
+                            "status:available"
                         ]
                     },
                     "effects": {
@@ -26,11 +27,6 @@
                         ]
                     }
                 }
-            }
-        },
-        "status":{
-            "properties": {
-                "value": "available"
             }
         }
     },

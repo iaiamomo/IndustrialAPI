@@ -13,7 +13,8 @@
                     ],
                     "requirements": {
                         "positive": [
-                            "o.taken:false"
+                            "o.taken:false",
+                            "status:available"
                         ]
                     },
                     "effects": {
@@ -25,11 +26,6 @@
                         ]
                     }
                 }
-            }
-        },
-        "status":{
-            "properties": {
-                "value": "available"
             }
         }
     },

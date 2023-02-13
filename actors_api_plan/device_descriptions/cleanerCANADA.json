@@ -36,17 +36,12 @@
                     }
                 }
             }
-        },
-        "status":{
-            "properties": {
-                "value": "broken"
-            }
         }
     },
     "features": {
         "status":{
             "properties": {
-                "value": "broken"
+                "value": "available"
             }
         }
     }

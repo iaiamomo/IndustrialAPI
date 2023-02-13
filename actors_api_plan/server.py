@@ -17,9 +17,10 @@ from actors_api_plan.helpers import setup_logger
 from actors_api_plan.messages import from_json, Message, Register, Update, \
     ExecuteServiceAction, ExecutionResult
 
+#from helpers import normpdf
+
 
 logger = setup_logger(name="server")
-
 
 
 class ServiceRegistry:
@@ -182,11 +183,17 @@ class Api:
         if service is None:
             return f'Service with id {service_id} not found', 404
 
-        # check if the status of the service is available or broken
+        #rompi il servizio -> DA TESTARE
+        """ 
+        prob = normpdf()
+        if prob > 0.7:
+            service.current_state["status"]["properties"]["value"] = "broken"
+            service.features["status"]["properties"]["value"] = "broken"
+            service.service_spec.current_state["status"]["properties"]["value"] = "broken"
+            return f'Service with id {service_id} is broken', 404
+        """
+
         contain = "status" in service.current_state
-        print(service_id)
-        print(service.current_state)
-        print(contain)
         if contain and service.current_state["status"]["properties"]["value"] == "available":
             command = actionBody["command"]
             service_name = actionBody["service_id"]

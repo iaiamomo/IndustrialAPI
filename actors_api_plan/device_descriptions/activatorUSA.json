@@ -20,7 +20,8 @@
                             "p.implanted:true",
                             "s.implanted:true",
                             "w.implanted:true",
-                            "w.activated:false"
+                            "w.activated:false",
+                            "status:available"
                         ]
                     },
                     "effects": {
@@ -32,11 +33,6 @@
                         ]
                     }
                 }
-            }
-        },
-        "status":{
-            "properties": {
-                "value": "available"
             }
         }
     },

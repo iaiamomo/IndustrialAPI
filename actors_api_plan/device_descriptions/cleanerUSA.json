@@ -36,11 +36,6 @@
                     }
                 }
             }
-        },
-        "status":{
-            "properties": {
-                "value": "available"
-            }
         }
     },
     "features": {
