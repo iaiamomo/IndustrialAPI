@@ -1,29 +1,29 @@
 {
-    "id": "stripperusa",
+    "id": "tester2usa",
     "attributes": {
         "type": "Service",
         "actions": {
-            "stripping": {
+            "testing": {
                 "properties": {
                     "type": "operation",
-                    "command": "strip",
-                    "cost": 1,
+                    "command": "test",
+                    "cost": 3,
                     "parameters": [
                         "Material - w"
                     ],
                     "requirements": {
                         "positive": [
-                            "w.activated:true",
-                            "w.stripped:false",
+                            "w.assembled:true",
+                            "w.tested:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.stripped:true"
+                            "w.tested:true"
                         ],
                         "deleted": [
-                            "w.stripped:false"
+                            "w.tested:false"
                         ]
                     }
                 }

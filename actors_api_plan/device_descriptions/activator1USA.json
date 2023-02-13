@@ -1,41 +1,35 @@
 {
-    "id": "implanterusa",
+    "id": "activator1usa",
     "attributes": {
         "type": "Service",
         "actions": {
-            "implanting": {
+            "activating": {
                 "properties": {
                     "type": "operation",
-                    "command": "implant",
+                    "command": "activate",
                     "cost": 1,
                     "parameters": [
-                        "Material - w",
                         "BoronMaterial - b",
                         "PhosphorMaterial - p",
-                        "SiliconMaterial - s"
+                        "SiliconMaterial - s",
+                        "Material - w"
                     ],
                     "requirements": {
                         "positive": [
-                            "w.etched:true",
-                            "w.implanted:false",
-                            "b.implanted:false",
-                            "p.implanted:false",
-                            "s.implanted:false",
+                            "b.implanted:true",
+                            "p.implanted:true",
+                            "s.implanted:true",
+                            "w.implanted:true",
+                            "w.activated:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.implanted:true",
-                            "b.implanted:true",
-                            "p.implanted:true",
-                            "s.implanted:true"
+                            "w.activated:true"
                         ],
                         "deleted": [
-                            "w.implanted:false",
-                            "b.implanted:false",
-                            "p.implanted:false",
-                            "s.implanted:false"
+                            "w.activated:false"
                         ]
                     }
                 }

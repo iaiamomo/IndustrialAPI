@@ -1,29 +1,28 @@
 {
-    "id": "assemblerusa",
+    "id": "designeruk",
     "attributes": {
         "type": "Service",
         "actions": {
-            "assembling": {
+            "taking_design": {
                 "properties": {
                     "type": "operation",
-                    "command": "assemble",
-                    "cost": 1,
+                    "command": "take_design",
+                    "cost": 6,
                     "parameters": [
-                        "Material - w"
+                        "Design - o"
                     ],
                     "requirements": {
                         "positive": [
-                            "w.stripped:true",
-                            "w.assembled:false",
+                            "o.taken:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.assembled:true"
+                            "o.taken:true"
                         ],
                         "deleted": [
-                            "w.assembled:false"
+                            "o.taken:false"
                         ]
                     }
                 }

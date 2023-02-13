@@ -1,29 +1,29 @@
 {
-    "id": "testerusa",
+    "id": "inventorymorocco",
     "attributes": {
         "type": "Service",
         "actions": {
-            "testing": {
+            "taking_phosphor": {
                 "properties": {
                     "type": "operation",
-                    "command": "test",
-                    "cost": 1,
+                    "command": "take_phosphor",
+                    "cost": 7,
                     "parameters": [
-                        "Material - w"
+                        "Design - d",
+                        "PhosphorMaterial - p"
                     ],
                     "requirements": {
                         "positive": [
-                            "w.assembled:true",
-                            "w.tested:false",
-                            "status:available"
+                            "d.taken:true",
+                            "p.taken:false"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.tested:true"
+                            "p.taken:true"
                         ],
                         "deleted": [
-                            "w.tested:false"
+                            "p.taken:false"
                         ]
                     }
                 }

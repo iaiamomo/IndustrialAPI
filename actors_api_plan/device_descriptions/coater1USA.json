@@ -1,5 +1,5 @@
 {
-    "id": "coaterusa",
+    "id": "coater1usa",
     "attributes": {
         "type": "Service",
         "actions": {
@@ -7,7 +7,7 @@
                 "properties": {
                     "type": "operation",
                     "command": "coat",
-                    "cost": 1,
+                    "cost": 5,
                     "parameters": [
                         "Material - w"
                     ],

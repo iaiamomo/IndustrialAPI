@@ -194,6 +194,7 @@ class Api:
         """
 
         contain = "status" in service.current_state
+        cost = 0
         if contain and service.current_state["status"]["properties"]["value"] == "available":
             command = actionBody["command"]
             service_name = actionBody["service_id"]
@@ -206,6 +207,7 @@ class Api:
             if actionResult == {}:
                 return f'Error in finding effect of action {command}', 404
 
+            cost = action.cost
             added_param = []
             deleted_param = []
             for actionRes in actionResult:
@@ -243,7 +245,8 @@ class Api:
 
         messageToReturn = {
             "value": "terminated",
-            "output": {"added": added_param, "deleted": deleted_param}
+            "output": {"added": added_param, "deleted": deleted_param},
+            "cost": cost
         }
 
         return messageToReturn, 200

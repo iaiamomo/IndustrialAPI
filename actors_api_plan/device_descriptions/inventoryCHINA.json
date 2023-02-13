@@ -1,5 +1,5 @@
 {
-    "id": "inventoryusa",
+    "id": "inventorychina",
     "attributes": {
         "type": "Service",
         "actions": {
@@ -7,7 +7,7 @@
                 "properties": {
                     "type": "operation",
                     "command": "take_boron",
-                    "cost": 1,
+                    "cost": 11,
                     "parameters": [
                         "Design - d",
                         "BoronMaterial - b"
@@ -27,35 +27,12 @@
                         ]
                     }
                 }
-            },"taking_phosphor": {
-                "properties": {
-                    "type": "operation",
-                    "command": "take_phosphor",
-                    "cost": 1,
-                    "parameters": [
-                        "Design - d",
-                        "PhosphorMaterial - p"
-                    ],
-                    "requirements": {
-                        "positive": [
-                            "d.taken:true",
-                            "p.taken:false"
-                        ]
-                    },
-                    "effects": {
-                        "added": [
-                            "p.taken:true"
-                        ],
-                        "deleted": [
-                            "p.taken:false"
-                        ]
-                    }
-                }
-            },"taking_silicon": {
+            },
+            "taking_silicon": {
                 "properties": {
                     "type": "operation",
                     "command": "take_silicon",
-                    "cost": 1,
+                    "cost": 11,
                     "parameters": [
                         "Design - d",
                         "SiliconMaterial - s"
@@ -72,6 +49,31 @@
                         ],
                         "deleted": [
                             "s.taken:false"
+                        ]
+                    }
+                }
+            },
+            "taking_phosphor": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_phosphor",
+                    "cost": 11,
+                    "parameters": [
+                        "Design - d",
+                        "PhosphorMaterial - p"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "p.taken:false"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "p.taken:true"
+                        ],
+                        "deleted": [
+                            "p.taken:false"
                         ]
                     }
                 }

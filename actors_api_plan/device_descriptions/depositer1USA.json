@@ -1,29 +1,29 @@
 {
-    "id": "exposerusa",
+    "id": "depositer1usa",
     "attributes": {
         "type": "Service",
         "actions": {
-            "exposing": {
+            "depositing": {
                 "properties": {
                     "type": "operation",
-                    "command": "expose",
-                    "cost": 1,
+                    "command": "deposit",
+                    "cost": 5,
                     "parameters": [
                         "Material - w"
                     ],
                     "requirements": {
                         "positive": [
-                            "w.coated:true",
-                            "w.exposed:false",
+                            "w.cleaned:true",
+                            "w.deposited:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.exposed:true"
+                            "w.deposited:true"
                         ],
                         "deleted": [
-                            "w.exposed:false"
+                            "w.deposited:false"
                         ]
                     }
                 }

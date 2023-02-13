@@ -1,29 +1,29 @@
 {
-    "id": "depositerusa",
+    "id": "assembler1usa",
     "attributes": {
         "type": "Service",
         "actions": {
-            "depositing": {
+            "assembling": {
                 "properties": {
                     "type": "operation",
-                    "command": "deposit",
+                    "command": "assemble",
                     "cost": 1,
                     "parameters": [
                         "Material - w"
                     ],
                     "requirements": {
                         "positive": [
-                            "w.cleaned:true",
-                            "w.deposited:false",
+                            "w.stripped:true",
+                            "w.assembled:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.deposited:true"
+                            "w.assembled:true"
                         ],
                         "deleted": [
-                            "w.deposited:false"
+                            "w.assembled:false"
                         ]
                     }
                 }

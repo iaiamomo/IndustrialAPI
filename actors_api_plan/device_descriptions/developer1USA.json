@@ -1,5 +1,5 @@
 {
-    "id": "developerusa",
+    "id": "developer1usa",
     "attributes": {
         "type": "Service",
         "actions": {
@@ -7,7 +7,7 @@
                 "properties": {
                     "type": "operation",
                     "command": "delevop",
-                    "cost": 1,
+                    "cost": 5,
                     "parameters": [
                         "Material - w"
                     ],

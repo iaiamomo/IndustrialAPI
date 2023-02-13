@@ -1,29 +1,29 @@
 {
-    "id": "packagerusa",
+    "id": "inventoryargentina",
     "attributes": {
         "type": "Service",
         "actions": {
-            "packaging": {
+            "taking_boron": {
                 "properties": {
                     "type": "operation",
-                    "command": "pack",
-                    "cost": 1,
+                    "command": "take_boron",
+                    "cost": 8,
                     "parameters": [
-                        "Material - w"
+                        "Design - d",
+                        "BoronMaterial - b"
                     ],
                     "requirements": {
                         "positive": [
-                            "w.tested:true",
-                            "w.packed:false",
-                            "status:available"
+                            "d.taken:true",
+                            "b.taken:false"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.packed:true"
+                            "b.taken:true"
                         ],
                         "deleted": [
-                            "w.packed:false"
+                            "b.taken:false"
                         ]
                     }
                 }
