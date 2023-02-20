@@ -1,7 +1,7 @@
 import logging
 from typing import Optional
-import requests
-import json
+import math
+import random
 
 def setup_logger(name: Optional[str] = None):
     """Set up the logger."""
@@ -13,7 +13,9 @@ def setup_logger(name: Optional[str] = None):
     logger.addHandler(handler)
     return logger
 
-def get_type_service(service_id: str) -> str:
-    response = requests.get(f"http://localhost:8080/services/{service_id}")
-    actor = json.loads(response.text)
-    return actor["attributes"]["type"]
+def normpdf(mean = 0.5, sd = 0.1) -> float:
+    x = random.random()
+    var = float(sd)**2
+    denom = (2*math.pi*var)**.5
+    num = math.exp(-(float(x)-float(mean))**2/(2*var))
+    return num/denom

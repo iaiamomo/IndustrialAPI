@@ -1,0 +1,40 @@
+{
+    "id": "inventorymorocco",
+    "attributes": {
+        "type": "Service",
+        "actions": {
+            "taking_phosphor": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_phosphor",
+                    "cost": 7,
+                    "parameters": [
+                        "Design - d",
+                        "PhosphorMaterial - p"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "p.taken:false"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "p.taken:true"
+                        ],
+                        "deleted": [
+                            "p.taken:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

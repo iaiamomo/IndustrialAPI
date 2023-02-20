@@ -1,16 +1,56 @@
 # Industrial APIs
 
-Implementing **Industrial APIs** for industrial actors. 
+Implementing **Industrial APIs** for industrial actors (devices, machines, humans,...). 
 
-Follow [template.json](actors_api/device_descriptions/template.json) to generate the actors descriptions. The template represents a converter device. The different aspects of the actor are represented as attributes and features. <em>Features</em> can either represent a state with properties (e.g., <code>status</code>, <code>voltage</code>) or a functionality of the actor (e.g., <code>converting</code>), while <em>attributes</em> (e.g., <code>type</code>) hold values that do not change or that change less frequently than the <em>feature</em> property values. Noticeably, for what concerns functionalities, effects can be different if something goes wrong during the execution. For example, if the <code>convert</code> fails, one or more effects could not be verified.
+Follow the following **template** to generate the actors descriptions. The template represents a designer human. The different aspects of the actor are represented as attributes and features. <em>Features</em> represent a state with properties (e.g., <code>status</code>), while <em>attributes</em> (e.g., <code>type</code>, <code>actions</code>) represent functionalities (e.g., <code>converting</code>) and values that do not change or that change less frequently than the <em>features</em> property values.
+```json
+{
+  "id": "designerusa",
+  "attributes": {
+      "type": "Service",
+      "actions": {
+          "taking_design": {
+              "properties": {
+                  "type": "operation",
+                  "command": "take_design",
+                  "cost": 1,
+                  "parameters": [
+                      "Object - o"
+                  ],
+                  "requirements": {
+                      "positive": [
+                          "o.taken:false"
+                      ]
+                  },
+                  "effects": {
+                      "added": [
+                          "o.taken:true"
+                      ],
+                      "deleted": [
+                          "o.taken:false"
+                      ]
+                  }
+              }
+          }
+      }
+  },
+  "features": {
+      "status":{
+          "properties": {
+              "value": "waiting"
+          }
+      }
+  }
+}
+```
 
 ## Instructions
-Run the HTTP server that acts as service repository and communication middleware:
+Run the server representing a middleware exposing HTTP server and a websocket server:
 ```sh
 python app.py
 ```
 
-Run all the services:
+Run the services (which communicate with the server through websocket):
 ```sh
 python launch_devices.py
 ```
@@ -23,7 +63,6 @@ pip install -r requirements.txt
 
 Generate Python client from OpenAPI v3.0 specification:
 ```sh
-cd open_client_script
-./generate-openapi-client.sh   #if on linux
-generate-openapi-client.bat    #if on Windows
+cd actors_api_plan/open_client_script
+./generate-openapi-client.sh
 ```

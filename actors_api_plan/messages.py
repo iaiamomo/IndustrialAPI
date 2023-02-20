@@ -18,12 +18,12 @@ class Update(Message):
 
 class ExecuteServiceAction(Message):
     TYPE = "execute_service_action"
-    def __init__(self, serviceAction: str) -> None:
+    def __init__(self, serviceAction: Dict) -> None:
         self.action = serviceAction
 
 class ExecutionResult(Message):
     TYPE = "execution_result"
-    def __init__(self, update: str) -> None:
+    def __init__(self, update: Dict) -> None:
         self.update = update
 
 

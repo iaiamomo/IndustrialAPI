@@ -35,6 +35,18 @@ paths:
                 $ref: '#/components/schemas/Service'
         404:
           description: Service does not exist
+  "/break-service/{service_id}":
+    post:
+      tags: [Services]
+      operationId: app.server.api.break_service
+      summary: Request to break a service
+      parameters:
+        - $ref: '#/components/parameters/serviceId'
+      responses:
+        200:
+          description: Return an ack to the caller
+        404:
+          description: Service does not exist
   "/execute-service-action/{service_id}":
     post:
       tags: [Services]
@@ -48,7 +60,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/action'
+              $ref: '#/components/schemas/Action'
       responses:
         200:
           description: Return an ack to the caller
@@ -72,12 +84,27 @@ components:
     stateName:
       type: string
       pattern: "^[A-Za-z0-9-_]+$"
-    action:
+    actionName:
       type: string
       pattern: "^[A-Za-z0-9-_]+$"
     deviceType:
       type: string
       pattern: "^[A-Za-z0-9-_]+$"
+    Action:
+      type: object
+      required:
+        - command
+        - service_id
+        - parameters
+      properties:
+        command:
+          type: string
+        service_id:
+          type: string
+        parameters:
+          type: array
+          items:
+            type: string
     ActionsSet:
       type: object
     Service:

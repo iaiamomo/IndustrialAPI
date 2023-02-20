@@ -50,11 +50,11 @@ class ServiceDevice:
     async def _handle_execute_service_action(self, message: ExecuteServiceAction, websocket: WebSocket):
         self.logger.info(f"Processing message of type '{message.TYPE}'")
         
-        self.logger.info(f"received action '{message}'")
-        # update = {"service_id": parameters[i], "state": stateParamEffect, "result": resultParamEffect}
-        self.service_instance.updateState({"state": message["state"], "value": message["result"]})   
+        action = message.action
+        self.logger.info(f"received action '{action}'")
+        self.service_instance.updateState({"state": action["state"], "value": action["result"]})   
 
-        message = ExecutionResult(str(message))
+        message = ExecutionResult(action)
         self.logger.info(f"Sending result to server")
         await WebSocketWrapper.send_message(websocket, message)
 
