@@ -1,12 +1,12 @@
 {
     "id": "exposer2usa",
     "attributes": {
-        "type": "Service",
+        "type": "Service_exp2",
         "actions": {
             "exposing": {
                 "properties": {
                     "type": "operation",
-                    "command": "expose",
+                    "command": "expose_2",
                     "cost": 1,
                     "parameters": [
                         "Material - w"

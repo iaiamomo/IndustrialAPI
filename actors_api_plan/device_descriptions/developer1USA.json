@@ -1,12 +1,12 @@
 {
     "id": "developer1usa",
     "attributes": {
-        "type": "Service",
+        "type": "Service_dev1",
         "actions": {
             "developing": {
                 "properties": {
                     "type": "operation",
-                    "command": "delevop",
+                    "command": "delevop_1",
                     "cost": 5,
                     "parameters": [
                         "Material - w"

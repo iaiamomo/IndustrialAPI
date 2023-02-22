@@ -1,12 +1,12 @@
 {
     "id": "tester1usa",
     "attributes": {
-        "type": "Service",
+        "type": "Service_tes1",
         "actions": {
             "testing": {
                 "properties": {
                     "type": "operation",
-                    "command": "test",
+                    "command": "test_1",
                     "cost": 5,
                     "parameters": [
                         "Material - w"

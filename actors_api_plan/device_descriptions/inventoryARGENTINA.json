@@ -1,12 +1,12 @@
 {
     "id": "inventoryargentina",
     "attributes": {
-        "type": "Service",
+        "type": "Service_inv_ar",
         "actions": {
             "taking_boron": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_boron",
+                    "command": "take_boron_ar",
                     "cost": 8,
                     "parameters": [
                         "Design - d",

@@ -1,12 +1,12 @@
 {
     "id": "implanter1usa",
     "attributes": {
-        "type": "Service",
+        "type": "Service_imp1",
         "actions": {
             "implanting": {
                 "properties": {
                     "type": "operation",
-                    "command": "implant",
+                    "command": "implant_1",
                     "cost": 5,
                     "parameters": [
                         "Material - w",

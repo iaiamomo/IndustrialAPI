@@ -26,7 +26,7 @@ def build_actor_from_json(data: Dict) -> "Actor":
         except:
             service_subtype = ""
         current_state = data["features"]
-        if service_type == "Service":
+        if "Service" in service_type:
             actions_dict = data["attributes"]["actions"]
             actions = {}
             for act in actions_dict.keys():

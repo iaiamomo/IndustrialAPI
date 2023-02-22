@@ -1,12 +1,12 @@
 {
     "id": "inventoryrussia",
     "attributes": {
-        "type": "Service",
+        "type": "Service_inv_ru",
         "actions": {
             "taking_silicon": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_silicon",
+                    "command": "take_silicon_ru",
                     "cost": 9,
                     "parameters": [
                         "Design - d",
@@ -31,8 +31,8 @@
             "taking_boron": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_boron",
-                    "cost": 10,
+                    "command": "take_boron_ru",
+                    "cost": 9,
                     "parameters": [
                         "Design - d",
                         "BoronMaterial - b"

@@ -1,12 +1,12 @@
 {
     "id": "activator1usa",
     "attributes": {
-        "type": "Service",
+        "type": "Service_act1",
         "actions": {
             "activating": {
                 "properties": {
                     "type": "operation",
-                    "command": "activate",
+                    "command": "activate_1",
                     "cost": 1,
                     "parameters": [
                         "BoronMaterial - b",

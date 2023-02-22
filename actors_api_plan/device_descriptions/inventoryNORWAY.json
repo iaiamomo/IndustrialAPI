@@ -1,12 +1,12 @@
 {
     "id": "inventorynorway",
     "attributes": {
-        "type": "Service",
+        "type": "Service_inv_no",
         "actions": {
             "taking_silicon": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_silicon",
+                    "command": "take_silicon_no",
                     "cost": 7,
                     "parameters": [
                         "Design - d",

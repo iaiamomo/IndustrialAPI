@@ -1,12 +1,12 @@
 {
     "id": "etcher2usa",
     "attributes": {
-        "type": "Service",
+        "type": "Service_etc2",
         "actions": {
             "etching": {
                 "properties": {
                     "type": "operation",
-                    "command": "etch",
+                    "command": "etch_2",
                     "cost": 5,
                     "parameters": [
                         "Material - w"

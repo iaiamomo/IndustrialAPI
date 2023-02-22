@@ -1,12 +1,12 @@
 {
     "id": "depositer2usa",
     "attributes": {
-        "type": "Service",
+        "type": "Service_dep2",
         "actions": {
             "depositing": {
                 "properties": {
                     "type": "operation",
-                    "command": "deposit",
+                    "command": "deposit_2",
                     "cost": 1,
                     "parameters": [
                         "Material - w"

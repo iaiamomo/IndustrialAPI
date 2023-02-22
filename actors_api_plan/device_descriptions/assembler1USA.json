@@ -1,12 +1,12 @@
 {
     "id": "assembler1usa",
     "attributes": {
-        "type": "Service",
+        "type": "Service_ass1",
         "actions": {
             "assembling": {
                 "properties": {
                     "type": "operation",
-                    "command": "assemble",
+                    "command": "assemble_1",
                     "cost": 1,
                     "parameters": [
                         "Material - w"

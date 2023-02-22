@@ -1,12 +1,12 @@
 {
     "id": "designertaiwan",
     "attributes": {
-        "type": "Service",
+        "type": "Service_des_tw",
         "actions": {
             "taking_design": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_design",
+                    "command": "take_design_tw",
                     "cost": 12,
                     "parameters": [
                         "Design - o"

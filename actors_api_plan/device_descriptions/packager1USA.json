@@ -1,12 +1,12 @@
 {
     "id": "packager1usa",
     "attributes": {
-        "type": "Service",
+        "type": "Service_pac1",
         "actions": {
             "packaging": {
                 "properties": {
                     "type": "operation",
-                    "command": "pack",
+                    "command": "pack_1",
                     "cost": 1,
                     "parameters": [
                         "Material - w"

@@ -1,12 +1,12 @@
 {
     "id": "designerchina",
     "attributes": {
-        "type": "Service",
+        "type": "Service_des_ch",
         "actions": {
             "taking_design": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_design",
+                    "command": "take_design_cn",
                     "cost": 11,
                     "parameters": [
                         "Design - o"

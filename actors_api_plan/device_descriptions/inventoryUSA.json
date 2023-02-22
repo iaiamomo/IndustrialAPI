@@ -1,12 +1,12 @@
 {
     "id": "inventoryusa",
     "attributes": {
-        "type": "Service",
+        "type": "Service_inv_us",
         "actions": {
             "taking_boron": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_boron",
+                    "command": "take_boron_us",
                     "cost": 1,
                     "parameters": [
                         "Design - d",
@@ -30,7 +30,7 @@
             },"taking_phosphor": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_phosphor",
+                    "command": "take_phosphor_us",
                     "cost": 1,
                     "parameters": [
                         "Design - d",
@@ -54,7 +54,7 @@
             },"taking_silicon": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_silicon",
+                    "command": "take_silicon_us",
                     "cost": 1,
                     "parameters": [
                         "Design - d",

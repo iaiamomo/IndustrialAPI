@@ -1,12 +1,12 @@
 {
     "id": "cleaner2usa",
     "attributes": {
-        "type": "Service",
+        "type": "Service_cle2",
         "actions": {
             "cleaning": {
                 "properties": {
                     "type": "operation",
-                    "command": "clean",
+                    "command": "clean_2",
                     "cost": 3,
                     "parameters": [
                         "Design - d",

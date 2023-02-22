@@ -1,12 +1,12 @@
 {
     "id": "inventorysouthkorea",
     "attributes": {
-        "type": "Service",
+        "type": "Service_inv_kr",
         "actions": {
             "taking_wafer": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_wafer",
+                    "command": "take_wafer_kr",
                     "cost": 10,
                     "parameters": [
                         "Design - d",

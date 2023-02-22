@@ -1,12 +1,12 @@
 {
     "id": "inventorychile",
     "attributes": {
-        "type": "Service",
+        "type": "Service_inv_cl",
         "actions": {
             "taking_boron": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_boron",
+                    "command": "take_boron_cl",
                     "cost": 7,
                     "parameters": [
                         "Design - d",

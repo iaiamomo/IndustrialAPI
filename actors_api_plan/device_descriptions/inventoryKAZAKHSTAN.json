@@ -1,12 +1,12 @@
 {
     "id": "inventorykazakhstan",
     "attributes": {
-        "type": "Service",
+        "type": "Service_inv_kz",
         "actions": {
             "taking_boron": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_boron",
+                    "command": "take_boron_kz",
                     "cost": 10,
                     "parameters": [
                         "Design - d",

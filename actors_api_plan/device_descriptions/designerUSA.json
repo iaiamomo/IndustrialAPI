@@ -1,12 +1,12 @@
 {
     "id": "designerusa",
     "attributes": {
-        "type": "Service",
+        "type": "Service_des_us",
         "actions": {
             "taking_design": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_design",
+                    "command": "take_design_us",
                     "cost": 1,
                     "parameters": [
                         "Design - o"

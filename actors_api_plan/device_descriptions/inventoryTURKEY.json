@@ -1,12 +1,12 @@
 {
     "id": "inventoryturkey",
     "attributes": {
-        "type": "Service",
+        "type": "Service_inv_tr",
         "actions": {
             "taking_boron": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_boron",
+                    "command": "take_boron_tr",
                     "cost": 10,
                     "parameters": [
                         "Design - d",

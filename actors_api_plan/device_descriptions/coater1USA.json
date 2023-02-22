@@ -1,12 +1,12 @@
 {
     "id": "coater1usa",
     "attributes": {
-        "type": "Service",
+        "type": "Service_coa1",
         "actions": {
             "coating": {
                 "properties": {
                     "type": "operation",
-                    "command": "coat",
+                    "command": "coat_1",
                     "cost": 5,
                     "parameters": [
                         "Material - w"

@@ -1,12 +1,12 @@
 {
     "id": "designeruk",
     "attributes": {
-        "type": "Service",
+        "type": "Service_des_uk",
         "actions": {
             "taking_design": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_design",
+                    "command": "take_design_uk",
                     "cost": 6,
                     "parameters": [
                         "Design - o"

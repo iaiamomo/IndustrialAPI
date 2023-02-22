@@ -1,12 +1,12 @@
 {
     "id": "inventorybolivia",
     "attributes": {
-        "type": "Service",
+        "type": "Service_inv_bo",
         "actions": {
             "taking_boron": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_boron",
+                    "command": "take_boron_bo",
                     "cost": 6,
                     "parameters": [
                         "Design - d",
