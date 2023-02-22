@@ -1,8 +1,6 @@
 actors_api_plan/client
-actors_api_plan/device_descriptions/*.json
+#actors_api_plan/device_descriptions/*.json
 actors_api_mdp
-!actors_api_plan/device_descriptions/template.json
-
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
