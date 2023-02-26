@@ -66,3 +66,6 @@ Generate Python client from OpenAPI v3.0 specification:
 cd actors_api_plan/open_client_script
 ./generate-openapi-client.sh
 ```
+
+## Note
+If you want to execute Industrial APIs to use MDP orchestrator please make some changes in [app.py](app.py) and [launch_devices.py](launch_devices.py) files.
