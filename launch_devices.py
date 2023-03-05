@@ -13,9 +13,10 @@ if __name__ == "__main__":
 
     processes: List[subprocess.Popen] = []
     
-    list_devices = glob.glob(f"actors_api_{mode}/device_descriptions/*.json")
+    list_devices = glob.glob(f"actors_api_{mode}/descriptions/*.json")
     for configuration_path in list_devices:
-        process = subprocess.Popen([sys.executable, f"run-service-{mode}.py", configuration_path])
+        script = f"run_target_{mode}.py" if "target" in configuration_path else f"run_service_{mode}.py"
+        process = subprocess.Popen([sys.executable, script, configuration_path])
         processes.append(process)
 
     for process in processes:
