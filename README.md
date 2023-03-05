@@ -5,9 +5,9 @@ Implementing **Industrial APIs** for industrial actors (devices, machines, human
 Follow the following **template** to generate the actors descriptions. The template represents a designer human. The different aspects of the actor are represented as attributes and features. <em>Features</em> represent a state with properties (e.g., <code>status</code>), while <em>attributes</em> (e.g., <code>type</code>, <code>actions</code>, <code>transitions</code>) represent functionalities and values that do not change or that change less frequently than the <em>features</em> property values.
 ```json
 {
-  "id": "designerusa",
+  "id": "<service_name>",
   "attributes": {
-      "type": "Service",
+      "type": "<service_type>",
       "_comment": "static properties"
   },
   "features": {
