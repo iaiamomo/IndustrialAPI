@@ -7,12 +7,15 @@ from websocket import WebSocket
 from actors_api_mdp.client import Client
 from actors_api_mdp.client.api.health.app_server_api_get_health import asyncio_detailed as get_health
 from actors_api_mdp.client.api.services.app_server_api_get_services import asyncio_detailed as get_services
+from actors_api_mdp.client.api.services.app_server_api_get_target_request import \
+    asyncio_detailed as get_target_request
+from actors_api_mdp.client.api.services.app_server_api_get_targets import asyncio_detailed as get_targets
 from actors_api_mdp.client.api.services.app_server_api_execute_service_action import asyncio_detailed as execute_service_action
 from actors_api_mdp.client.api.services.app_server_api_get_service import asyncio_detailed as get_service
 from actors_api_mdp.client.api.services.app_server_api_do_maintenance import asyncio_detailed as do_maintenance
 from actors_api_mdp.client.models import Service
-from actors_api_mdp.data import ServiceInstance
-from actors_api_mdp.helpers import ServiceId
+from actors_api_mdp.data import ServiceInstance, TargetInstance
+from actors_api_mdp.helpers import TargetId, ServiceId
 from actors_api_mdp.messages import Message, from_json, to_json
 
 TIMEOUT = 60.0

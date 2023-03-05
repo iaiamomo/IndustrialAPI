@@ -1,12 +1,16 @@
 from functools import singledispatch
 from typing import Dict
 
-from actors_api_mdp.data import ServiceInstance
+from actors_api_mdp.utils import target_from_json
+from actors_api_mdp.data import ServiceInstance, target_to_json, TargetInstance
+from actors_api_mdp.helpers import TargetId
+from actors_api_mdp.target import Target
+from actors_api_mdp.types import MDPDynamics
 
 
 class Message:
 
-    TYPE: str   # variable
+    TYPE: str
 
 
 class Register(Message):
@@ -25,9 +29,30 @@ class Update(Message):
         self.service_instance = service_instance
 
 
+class RegisterTarget(Message):
+
+    TYPE = "register_target"
+
+    def __init__(self, target_instance: TargetInstance) -> None:
+        self.target_instance = target_instance
+
+
+class RequestTargetAction(Message):
+
+    TYPE = "request_target_action"
+
+
+class ResponseTargetAction(Message):
+
+    TYPE = "response_target_action"
+
+    def __init__(self, action: str) -> None:
+        self.action = action
+
+
 class ExecuteServiceAction(Message):
 
-    TYPE = "execute_service_action"
+    TYPE = "execute_target_action"
 
     def __init__(self, action: str) -> None:
         self.action = action
@@ -37,8 +62,9 @@ class ExecutionResult(Message):
 
     TYPE = "execution_result"
 
-    def __init__(self, new_state: str) -> None:
+    def __init__(self, new_state: str, transition_function: MDPDynamics) -> None:
         self.new_state = new_state
+        self.transition_function = transition_function
 
 
 class DoMaintenance(Message):
@@ -58,6 +84,13 @@ def from_json(obj: Dict) -> Message:
         case Update.TYPE:
             service_instance = ServiceInstance.from_json(payload)
             return Update(service_instance)
+        case RegisterTarget.TYPE:
+            target_instance = TargetInstance.from_json(payload)
+            return RegisterTarget(target_instance)
+        case RequestTargetAction.TYPE:
+            return RequestTargetAction()
+        case ResponseTargetAction.TYPE:
+            return ResponseTargetAction(payload["action"])
         case ExecuteServiceAction.TYPE:
             return ExecuteServiceAction(payload["action"])
         case ExecutionResult.TYPE:
@@ -86,6 +119,30 @@ def update_to_json(message: Update):
     return dict(
         type=message.TYPE,
         payload=message.service_instance.json
+    )
+
+
+@to_json.register
+def register_target_to_json(message: RegisterTarget):
+    return dict(
+        type=message.TYPE,
+        payload=message.target_instance.json
+    )
+
+
+@to_json.register
+def request_target_action_to_json(message: RequestTargetAction):
+    return dict(
+        type=message.TYPE,
+        payload={}
+    )
+
+
+@to_json.register
+def response_target_action_to_json(message: ResponseTargetAction):
+    return dict(
+        type=message.TYPE,
+        payload=dict(action=message.action)
     )
 
 

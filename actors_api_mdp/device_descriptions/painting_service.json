@@ -1,10 +1,10 @@
 {
-  "id": "drying_service",
+  "id": "painting_service",
   "attributes": {
     "type": "service",
     "transitions": {
       "available": {
-        "drying": [
+        "painting": [
           {
             "done": 0.95,
             "broken": 0.05
@@ -13,7 +13,7 @@
         ]
       },
       "broken": {
-        "check_drying": [
+        "check_painting": [
           {
             "available": 1
           },
@@ -21,7 +21,7 @@
         ]
       },
       "done": {
-        "check_drying": [
+        "check_painting": [
           {
             "available": 1
           },
@@ -37,7 +37,7 @@
   "features": {
     "transition_function": {
       "available": {
-        "drying": [
+        "painting": [
           {
             "done": 0.95,
             "broken": 0.05
@@ -46,7 +46,7 @@
         ]
       },
       "broken": {
-        "check_drying": [
+        "check_painting": [
           {
             "available": 1
           },
@@ -54,7 +54,7 @@
         ]
       },
       "done": {
-        "check_drying": [
+        "check_painting": [
           {
             "available": 1
           },

@@ -7,7 +7,7 @@ from actors_api_mdp.types import (
     Action,
     State,
     TransitionFunction,
-    TransitionFunctionReward,
+    MDPDynamics,
 )
 
 
@@ -20,7 +20,7 @@ class Service:
         actions: Set[Action],
         final_states: Set[State],
         initial_state: State,
-        transition_function: TransitionFunctionReward,
+        transition_function: MDPDynamics,
     ):
         """
         Initialize the service.
@@ -114,7 +114,7 @@ def build_deterministic_service_from_transitions(
     """
     states = set()
     actions = set()
-    new_transition_function: TransitionFunctionReward = {}
+    new_transition_function: MDPDynamics = {}
     for start_state, transitions_by_action in transition_function.items():
         states.add(start_state)
         new_transition_function[start_state] = {}
@@ -135,7 +135,7 @@ def build_deterministic_service_from_transitions(
 
 
 def build_service_from_transitions(
-    transition_function: TransitionFunctionReward,
+    transition_function: MDPDynamics,
     initial_state: State,
     final_states: Set[State],
 ) -> Service:
@@ -182,7 +182,7 @@ def build_system_service(*services: Service) -> Service:
     new_initial_state: Tuple[State, ...] = tuple(
         service.initial_state for service in services
     )
-    new_transition_function: TransitionFunctionReward = {}
+    new_transition_function: MDPDynamics = {}
 
     queue: Deque[Tuple[State, ...]] = deque()
     queue.append(new_initial_state)

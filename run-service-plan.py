@@ -13,7 +13,7 @@ from websockets.exceptions import ConnectionClosedOK
 from actors_api_plan.client_wrapper import WebSocketWrapper
 from actors_api_plan.data import ServiceInstance
 from actors_api_plan.helpers import setup_logger
-from actors_api_plan.messages import Register, Message, ExecuteServiceAction, ExecutionResult, Update
+from actors_api_plan.messages import Register, Message, ExecuteServiceAction, ExecutionResult
 
 class ServiceDevice:
     def __init__(self, spec: Path, host: str = "localhost", port: int = 8765):
