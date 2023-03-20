@@ -1,7 +1,7 @@
 {
-    "id": "silicon",
+    "id": "resist",
     "attributes": {
-        "type": "SiliconMaterial"
+        "type": "ResistMaterial"
     },
     "features": {
         "taken": {
@@ -9,12 +9,7 @@
                 "value": "false"
             }
         },
-        "implanted": {
-            "properties": {
-                "value": "false"
-            }
-        },
-        "deposited": {
+        "coated": {
             "properties": {
                 "value": "false"
             }

@@ -1,7 +1,7 @@
 {
-    "id": "silicon",
+    "id": "chemicals",
     "attributes": {
-        "type": "SiliconMaterial"
+        "type": "ChemicalsMaterial"
     },
     "features": {
         "taken": {
@@ -9,12 +9,12 @@
                 "value": "false"
             }
         },
-        "implanted": {
+        "etched": {
             "properties": {
                 "value": "false"
             }
         },
-        "deposited": {
+        "stripped": {
             "properties": {
                 "value": "false"
             }

@@ -1,7 +1,7 @@
 {
-    "id": "silicon",
+    "id": "copper",
     "attributes": {
-        "type": "SiliconMaterial"
+        "type": "CopperMaterial"
     },
     "features": {
         "taken": {
@@ -9,12 +9,7 @@
                 "value": "false"
             }
         },
-        "implanted": {
-            "properties": {
-                "value": "false"
-            }
-        },
-        "deposited": {
+        "assembled": {
             "properties": {
                 "value": "false"
             }

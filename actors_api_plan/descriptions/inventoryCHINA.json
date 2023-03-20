@@ -77,6 +77,56 @@
                         ]
                     }
                 }
+            },
+            "taking_plastic": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_plastic_ch",
+                    "cost": 11,
+                    "parameters": [
+                        "Design - d",
+                        "PlasticMaterial - p"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "p.taken:false"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "p.taken:true"
+                        ],
+                        "deleted": [
+                            "p.taken:false"
+                        ]
+                    }
+                }
+            },
+            "taking_copper": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_copper_ch",
+                    "cost": 11,
+                    "parameters": [
+                        "Design - d",
+                        "CopperMaterial - b"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "b.taken:false"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "b.taken:true"
+                        ],
+                        "deleted": [
+                            "b.taken:false"
+                        ]
+                    }
+                }
             }
         }
     },

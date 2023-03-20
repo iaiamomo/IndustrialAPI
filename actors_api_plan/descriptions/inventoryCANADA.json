@@ -1,41 +1,41 @@
 {
-    "id": "inventorybrazil",
+    "id": "inventorycanada",
     "attributes": {
-        "type": "Service_inv_br",
+        "type": "Service_inv_ca",
         "actions": {
-            "taking_silicon": {
+            "taking_resist": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_silicon_br",
-                    "cost": 6,
+                    "command": "take_resist_ca",
+                    "cost": 2,
                     "parameters": [
                         "Design - d",
-                        "SiliconMaterial - s"
+                        "ResistMaterial - b"
                     ],
                     "requirements": {
                         "positive": [
                             "d.taken:true",
-                            "s.taken:false"
+                            "b.taken:false"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "s.taken:true"
+                            "b.taken:true"
                         ],
                         "deleted": [
-                            "s.taken:false"
+                            "b.taken:false"
                         ]
                     }
                 }
             },
-            "taking_aluminum": {
+            "taking_chemicals": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_aluminum_br",
-                    "cost": 6,
+                    "command": "take_chemicals_ca",
+                    "cost": 2,
                     "parameters": [
                         "Design - d",
-                        "AluminumMaterial - b"
+                        "ChemicalsMaterial - b"
                     ],
                     "requirements": {
                         "positive": [

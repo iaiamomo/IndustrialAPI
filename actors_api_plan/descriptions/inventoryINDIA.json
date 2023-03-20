@@ -1,38 +1,13 @@
 {
-    "id": "inventorybrazil",
+    "id": "inventoryindia",
     "attributes": {
-        "type": "Service_inv_br",
+        "type": "Service_inv_in",
         "actions": {
-            "taking_silicon": {
-                "properties": {
-                    "type": "operation",
-                    "command": "take_silicon_br",
-                    "cost": 6,
-                    "parameters": [
-                        "Design - d",
-                        "SiliconMaterial - s"
-                    ],
-                    "requirements": {
-                        "positive": [
-                            "d.taken:true",
-                            "s.taken:false"
-                        ]
-                    },
-                    "effects": {
-                        "added": [
-                            "s.taken:true"
-                        ],
-                        "deleted": [
-                            "s.taken:false"
-                        ]
-                    }
-                }
-            },
             "taking_aluminum": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_aluminum_br",
-                    "cost": 6,
+                    "command": "take_aluminum_in",
+                    "cost": 13,
                     "parameters": [
                         "Design - d",
                         "AluminumMaterial - b"
@@ -49,6 +24,56 @@
                         ],
                         "deleted": [
                             "b.taken:false"
+                        ]
+                    }
+                }
+            },
+            "taking_resist": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_resist_in",
+                    "cost": 13,
+                    "parameters": [
+                        "Design - d",
+                        "ResistMaterial - b"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "b.taken:false"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "b.taken:true"
+                        ],
+                        "deleted": [
+                            "b.taken:false"
+                        ]
+                    }
+                }
+            },
+            "taking_plastic": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_plastic_in",
+                    "cost": 13,
+                    "parameters": [
+                        "Design - d",
+                        "PlasticMaterial - p"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "p.taken:false"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "p.taken:true"
+                        ],
+                        "deleted": [
+                            "p.taken:false"
                         ]
                     }
                 }

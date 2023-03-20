@@ -27,6 +27,31 @@
                         ]
                     }
                 }
+            },
+            "taking_copper": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_copper_cl",
+                    "cost": 7,
+                    "parameters": [
+                        "Design - d",
+                        "CopeprMaterial - b"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "b.taken:false"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "b.taken:true"
+                        ],
+                        "deleted": [
+                            "b.taken:false"
+                        ]
+                    }
+                }
             }
         }
     },

@@ -9,21 +9,29 @@
                     "command": "coat_1",
                     "cost": 5,
                     "parameters": [
-                        "Material - w"
+                        "Material - w",
+                        "ResistMaterial - r", 
+                        "SiliconMaterial - s",
+                        "AluminumMaterial - a"
                     ],
                     "requirements": {
                         "positive": [
                             "w.deposited:true",
+                            "s.deposited:true",
+                            "a.deposited:true",
                             "w.coated:false",
+                            "r.deposited:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.coated:true"
+                            "w.coated:true",
+                            "r.deposited:true"
                         ],
                         "deleted": [
-                            "w.coated:false"
+                            "w.coated:false",
+                            "r.deposited:false"
                         ]
                     }
                 }

@@ -1,7 +1,7 @@
 {
-    "id": "silicon",
+    "id": "plastic",
     "attributes": {
-        "type": "SiliconMaterial"
+        "type": "PlasticMaterial"
     },
     "features": {
         "taken": {
@@ -9,12 +9,7 @@
                 "value": "false"
             }
         },
-        "implanted": {
-            "properties": {
-                "value": "false"
-            }
-        },
-        "deposited": {
+        "packed": {
             "properties": {
                 "value": "false"
             }

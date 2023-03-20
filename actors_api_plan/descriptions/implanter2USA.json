@@ -12,11 +12,13 @@
                         "Material - w",
                         "BoronMaterial - b",
                         "PhosphorMaterial - p",
-                        "SiliconMaterial - s"
+                        "SiliconMaterial - s",
+                        "ChemicalsMaterial - c"
                     ],
                     "requirements": {
                         "positive": [
                             "w.etched:true",
+                            "c.etched:true",
                             "w.implanted:false",
                             "b.implanted:false",
                             "p.implanted:false",

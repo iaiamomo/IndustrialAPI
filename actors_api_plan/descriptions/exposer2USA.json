@@ -9,11 +9,13 @@
                     "command": "expose_2",
                     "cost": 1,
                     "parameters": [
-                        "Material - w"
+                        "Material - w",
+                        "ResistMaterial - r"
                     ],
                     "requirements": {
                         "positive": [
                             "w.coated:true",
+                            "r.coated:true",
                             "w.exposed:false",
                             "status:available"
                         ]

@@ -1,15 +1,10 @@
 {
-    "id": "silicon",
+    "id": "aluminum",
     "attributes": {
-        "type": "SiliconMaterial"
+        "type": "AluminumMaterial"
     },
     "features": {
         "taken": {
-            "properties": {
-                "value": "false"
-            }
-        },
-        "implanted": {
             "properties": {
                 "value": "false"
             }

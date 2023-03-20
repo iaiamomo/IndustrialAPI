@@ -1,33 +1,29 @@
 {
-    "id": "stripper2usa",
+    "id": "inventoryaustralia",
     "attributes": {
-        "type": "Service_str2",
+        "type": "Service_inv_au",
         "actions": {
-            "stripping": {
+            "taking_aluminum": {
                 "properties": {
                     "type": "operation",
-                    "command": "strip_2",
-                    "cost": 3,
+                    "command": "take_aluminum_au",
+                    "cost": 14,
                     "parameters": [
-                        "Material - w",
-                        "ChemicalsMaterial - c"
+                        "Design - d",
+                        "AluminumMaterial - b"
                     ],
                     "requirements": {
                         "positive": [
-                            "w.activated:true",
-                            "w.stripped:false",
-                            "c.stripped:false",
-                            "status:available"
+                            "d.taken:true",
+                            "b.taken:false"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.stripped:true",
-                            "c.stripped:true"
+                            "b.taken:true"
                         ],
                         "deleted": [
-                            "w.stripped:false",
-                            "c.stripped:false"
+                            "b.taken:false"
                         ]
                     }
                 }

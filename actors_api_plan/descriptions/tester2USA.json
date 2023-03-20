@@ -9,11 +9,13 @@
                     "command": "test_2",
                     "cost": 3,
                     "parameters": [
-                        "Material - w"
+                        "Material - w",
+                        "CopperMaterial - c"
                     ],
                     "requirements": {
                         "positive": [
                             "w.assembled:true",
+                            "c.assembled:true",
                             "w.tested:false",
                             "status:available"
                         ]

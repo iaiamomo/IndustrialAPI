@@ -13,6 +13,11 @@
                         "BoronMaterial - b",
                         "PhosphorMaterial - p",
                         "SiliconMaterial - s",
+                        "AluminumMaterial - a",
+                        "ResistMaterial - r",
+                        "PlasticMaterial - pl",
+                        "ChemicalsMaterial - c",
+                        "CopperMaterial - cu",
                         "Material - w"
                     ],
                     "requirements": {
@@ -22,6 +27,11 @@
                             "p.taken:true",
                             "s.taken:true",
                             "w.taken:true",
+                            "a.taken:true",
+                            "r.taken:true",
+                            "pl.taken:true",
+                            "c.taken:true",
+                            "cu.taken:true",
                             "w.cleaned:false",
                             "status:available"
                         ]
