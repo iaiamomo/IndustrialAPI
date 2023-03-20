@@ -8,16 +8,6 @@
             "properties": {
                 "value": "false"
             }
-        },
-        "etched": {
-            "properties": {
-                "value": "false"
-            }
-        },
-        "stripped": {
-            "properties": {
-                "value": "false"
-            }
         }
     }
 }

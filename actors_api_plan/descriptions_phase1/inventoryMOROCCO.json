@@ -15,7 +15,8 @@
                     "requirements": {
                         "positive": [
                             "d.taken:true",
-                            "p.taken:false"
+                            "p.taken:false",
+                            "status:available"
                         ]
                     },
                     "effects": {

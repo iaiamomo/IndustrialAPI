@@ -15,7 +15,8 @@
                     "requirements": {
                         "positive": [
                             "d.taken:true",
-                            "b.taken:false"
+                            "b.taken:false",
+                            "status:available"
                         ]
                     },
                     "effects": {
@@ -31,7 +32,7 @@
             "taking_silicon": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_silicon_ch",
+                    "command": "take_silicon_cn",
                     "cost": 11,
                     "parameters": [
                         "Design - d",
@@ -40,7 +41,8 @@
                     "requirements": {
                         "positive": [
                             "d.taken:true",
-                            "s.taken:false"
+                            "s.taken:false",
+                            "status:available"
                         ]
                     },
                     "effects": {
@@ -56,7 +58,7 @@
             "taking_phosphor": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_phosphor_ch",
+                    "command": "take_phosphor_cn",
                     "cost": 11,
                     "parameters": [
                         "Design - d",
@@ -65,7 +67,8 @@
                     "requirements": {
                         "positive": [
                             "d.taken:true",
-                            "p.taken:false"
+                            "p.taken:false",
+                            "status:available"
                         ]
                     },
                     "effects": {
@@ -81,7 +84,7 @@
             "taking_plastic": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_plastic_ch",
+                    "command": "take_plastic_cn",
                     "cost": 11,
                     "parameters": [
                         "Design - d",
@@ -90,7 +93,8 @@
                     "requirements": {
                         "positive": [
                             "d.taken:true",
-                            "p.taken:false"
+                            "p.taken:false",
+                            "status:available"
                         ]
                     },
                     "effects": {
@@ -106,7 +110,7 @@
             "taking_copper": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_copper_ch",
+                    "command": "take_copper_cn",
                     "cost": 11,
                     "parameters": [
                         "Design - d",
@@ -115,7 +119,8 @@
                     "requirements": {
                         "positive": [
                             "d.taken:true",
-                            "b.taken:false"
+                            "b.taken:false",
+                            "status:available"
                         ]
                     },
                     "effects": {

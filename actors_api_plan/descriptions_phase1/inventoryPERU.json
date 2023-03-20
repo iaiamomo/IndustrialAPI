@@ -10,12 +10,13 @@
                     "cost": 6,
                     "parameters": [
                         "Design - d",
-                        "CopeprMaterial - b"
+                        "CopperMaterial - b"
                     ],
                     "requirements": {
                         "positive": [
                             "d.taken:true",
-                            "b.taken:false"
+                            "b.taken:false",
+                            "status:available"
                         ]
                     },
                     "effects": {

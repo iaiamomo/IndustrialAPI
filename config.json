@@ -1,4 +1,5 @@
 {
     "mode": "plan",
-    "phase": 1
+    "phase": 2,
+    "size": "small"
 }

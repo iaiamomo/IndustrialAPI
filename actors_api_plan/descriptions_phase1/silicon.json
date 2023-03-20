@@ -8,16 +8,6 @@
             "properties": {
                 "value": "false"
             }
-        },
-        "implanted": {
-            "properties": {
-                "value": "false"
-            }
-        },
-        "deposited": {
-            "properties": {
-                "value": "false"
-            }
         }
     }
 }
