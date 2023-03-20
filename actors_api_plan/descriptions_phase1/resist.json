@@ -1,0 +1,18 @@
+{
+    "id": "resist",
+    "attributes": {
+        "type": "ResistMaterial"
+    },
+    "features": {
+        "taken": {
+            "properties": {
+                "value": "false"
+            }
+        },
+        "coated": {
+            "properties": {
+                "value": "false"
+            }
+        }
+    }
+}

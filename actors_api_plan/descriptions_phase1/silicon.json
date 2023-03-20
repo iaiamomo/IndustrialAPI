@@ -1,0 +1,23 @@
+{
+    "id": "silicon",
+    "attributes": {
+        "type": "SiliconMaterial"
+    },
+    "features": {
+        "taken": {
+            "properties": {
+                "value": "false"
+            }
+        },
+        "implanted": {
+            "properties": {
+                "value": "false"
+            }
+        },
+        "deposited": {
+            "properties": {
+                "value": "false"
+            }
+        }
+    }
+}
