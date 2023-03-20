@@ -20,18 +20,18 @@
                             "s.deposited:true",
                             "a.deposited:true",
                             "w.coated:false",
-                            "r.deposited:false",
+                            "r.coated:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
                             "w.coated:true",
-                            "r.deposited:true"
+                            "r.coated:true"
                         ],
                         "deleted": [
                             "w.coated:false",
-                            "r.deposited:false"
+                            "r.coated:false"
                         ]
                     }
                 }
