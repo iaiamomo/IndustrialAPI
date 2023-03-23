@@ -1,28 +1,31 @@
 {
-    "id": "designertaiwan",
+    "id": "exposer3usa",
     "attributes": {
-        "type": "Service_des_tw",
+        "type": "Service_exp3",
         "actions": {
-            "taking_design": {
+            "exposing": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_design_tw",
-                    "cost": 12,
+                    "command": "expose_3",
+                    "cost": 1,
                     "parameters": [
-                        "Design - o"
+                        "Material - w",
+                        "ResistMaterial - r"
                     ],
                     "requirements": {
                         "positive": [
-                            "o.taken:false",
+                            "w.coated:true",
+                            "r.coated:true",
+                            "w.exposed:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "o.taken:true"
+                            "w.exposed:true"
                         ],
                         "deleted": [
-                            "o.taken:false"
+                            "w.exposed:false"
                         ]
                     }
                 }

@@ -1,12 +1,12 @@
 {
-    "id": "implanter2usa",
+    "id": "implanter3usa",
     "attributes": {
-        "type": "Service_imp2",
+        "type": "Service_imp3",
         "actions": {
             "implanting": {
                 "properties": {
                     "type": "operation",
-                    "command": "implant_2",
+                    "command": "implant_3",
                     "cost": 3,
                     "parameters": [
                         "Material - w",

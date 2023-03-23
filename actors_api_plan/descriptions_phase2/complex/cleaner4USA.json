@@ -1,28 +1,28 @@
 {
-    "id": "designerchina",
+    "id": "cleaner4usa",
     "attributes": {
-        "type": "Service_des_ch",
+        "type": "Service_cle4",
         "actions": {
-            "taking_design": {
+            "cleaning": {
                 "properties": {
                     "type": "operation",
-                    "command": "take_design_cn",
-                    "cost": 11,
+                    "command": "clean_4",
+                    "cost": 3,
                     "parameters": [
-                        "Design - o"
+                        "Material - w"
                     ],
                     "requirements": {
                         "positive": [
-                            "o.taken:false",
+                            "w.cleaned:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "o.taken:true"
+                            "w.cleaned:true"
                         ],
                         "deleted": [
-                            "o.taken:false"
+                            "w.cleaned:false"
                         ]
                     }
                 }

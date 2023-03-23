@@ -1,37 +1,33 @@
 {
-    "id": "depositer2usa",
+    "id": "stripper3usa",
     "attributes": {
-        "type": "Service_dep2",
+        "type": "Service_str3",
         "actions": {
-            "depositing": {
+            "stripping": {
                 "properties": {
                     "type": "operation",
-                    "command": "deposit_2",
-                    "cost": 1,
+                    "command": "strip_3",
+                    "cost": 3,
                     "parameters": [
                         "Material - w",
-                        "SiliconMaterial - s",
-                        "AluminumMaterial - a"
+                        "ChemicalsMaterial - c"
                     ],
                     "requirements": {
                         "positive": [
-                            "w.cleaned:true",
-                            "w.deposited:false",
-                            "s.deposited:false",
-                            "a.deposited:false",
+                            "w.activated:true",
+                            "w.stripped:false",
+                            "c.stripped:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.deposited:true",
-                            "s.deposited:true",
-                            "a.deposited:true"
+                            "w.stripped:true",
+                            "c.stripped:true"
                         ],
                         "deleted": [
-                            "w.deposited:false",
-                            "s.deposited:false",
-                            "a.deposited:false"
+                            "w.stripped:false",
+                            "c.stripped:false"
                         ]
                     }
                 }

@@ -1,28 +1,35 @@
 {
-    "id": "cleaner2usa",
+    "id": "assembler5usa",
     "attributes": {
-        "type": "Service_cle2",
+        "type": "Service_ass5",
         "actions": {
-            "cleaning": {
+            "assembling": {
                 "properties": {
                     "type": "operation",
-                    "command": "clean_2",
+                    "command": "assemble_5",
                     "cost": 3,
                     "parameters": [
-                        "Material - w"
+                        "Material - w",
+                        "CopperMaterial - c",
+                        "ChemicalsMaterial - ch"
                     ],
                     "requirements": {
                         "positive": [
-                            "w.cleaned:false",
+                            "w.stripped:true",
+                            "ch.stripped:true",
+                            "w.assembled:false",
+                            "c.assembled:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.cleaned:true"
+                            "w.assembled:true",
+                            "c.assembled:true"
                         ],
                         "deleted": [
-                            "w.cleaned:false"
+                            "w.assembled:false",
+                            "c.assembled:false"
                         ]
                     }
                 }

@@ -1,33 +1,37 @@
 {
-    "id": "packager2usa",
+    "id": "coater5usa",
     "attributes": {
-        "type": "Service_pac2",
+        "type": "Service_coa5",
         "actions": {
-            "packaging": {
+            "coating": {
                 "properties": {
                     "type": "operation",
-                    "command": "pack_2",
-                    "cost": 3,
+                    "command": "coat_5",
+                    "cost": 5,
                     "parameters": [
                         "Material - w",
-                        "PlasticMaterial - p"
+                        "ResistMaterial - r", 
+                        "SiliconMaterial - s",
+                        "AluminumMaterial - a"
                     ],
                     "requirements": {
                         "positive": [
-                            "w.tested:true",
-                            "w.packed:false",
-                            "p.packed:false",
+                            "w.deposited:true",
+                            "s.deposited:true",
+                            "a.deposited:true",
+                            "w.coated:false",
+                            "r.coated:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.packed:true",
-                            "p.packed:true"
+                            "w.coated:true",
+                            "r.coated:true"
                         ],
                         "deleted": [
-                            "w.packed:false",
-                            "p.packed:false"
+                            "w.coated:false",
+                            "r.coated:false"
                         ]
                     }
                 }
