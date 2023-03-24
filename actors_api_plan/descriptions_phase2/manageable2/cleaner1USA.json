@@ -1,35 +1,28 @@
 {
-    "id": "activator4usa",
+    "id": "cleaner1usa",
     "attributes": {
-        "type": "Service_act4",
+        "type": "Service_cle1",
         "actions": {
-            "activating": {
+            "cleaning": {
                 "properties": {
                     "type": "operation",
-                    "command": "activate_4",
-                    "cost": 4,
+                    "command": "clean_1",
+                    "cost": 1,
                     "parameters": [
-                        "BoronMaterial - b",
-                        "PhosphorMaterial - p",
-                        "SiliconMaterial - s",
                         "Material - w"
                     ],
                     "requirements": {
                         "positive": [
-                            "b.implanted:true",
-                            "p.implanted:true",
-                            "s.implanted:true",
-                            "w.implanted:true",
-                            "w.activated:false",
+                            "w.cleaned:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.activated:true"
+                            "w.cleaned:true"
                         ],
                         "deleted": [
-                            "w.activated:false"
+                            "w.cleaned:false"
                         ]
                     }
                 }

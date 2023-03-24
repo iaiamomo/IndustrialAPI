@@ -7,7 +7,7 @@
                 "properties": {
                     "type": "operation",
                     "command": "assemble_1",
-                    "cost": 1,
+                    "cost": 5,
                     "parameters": [
                         "Material - w",
                         "CopperMaterial - c",

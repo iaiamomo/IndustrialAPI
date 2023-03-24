@@ -1,35 +1,31 @@
 {
-    "id": "activator4usa",
+    "id": "tester1usa",
     "attributes": {
-        "type": "Service_act4",
+        "type": "Service_tes1",
         "actions": {
-            "activating": {
+            "testing": {
                 "properties": {
                     "type": "operation",
-                    "command": "activate_4",
-                    "cost": 4,
+                    "command": "test_1",
+                    "cost": 5,
                     "parameters": [
-                        "BoronMaterial - b",
-                        "PhosphorMaterial - p",
-                        "SiliconMaterial - s",
-                        "Material - w"
+                        "Material - w",
+                        "CopperMaterial - c"
                     ],
                     "requirements": {
                         "positive": [
-                            "b.implanted:true",
-                            "p.implanted:true",
-                            "s.implanted:true",
-                            "w.implanted:true",
-                            "w.activated:false",
+                            "w.assembled:true",
+                            "c.assembled:true",
+                            "w.tested:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.activated:true"
+                            "w.tested:true"
                         ],
                         "deleted": [
-                            "w.activated:false"
+                            "w.tested:false"
                         ]
                     }
                 }

@@ -1,13 +1,13 @@
 {
-    "id": "implanter4usa",
+    "id": "implanter1usa",
     "attributes": {
-        "type": "Service_imp4",
+        "type": "Service_imp1",
         "actions": {
             "implanting": {
                 "properties": {
                     "type": "operation",
-                    "command": "implant_4",
-                    "cost": 2,
+                    "command": "implant_1",
+                    "cost": 5,
                     "parameters": [
                         "Material - w",
                         "BoronMaterial - b",

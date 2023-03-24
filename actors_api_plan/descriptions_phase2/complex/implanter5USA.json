@@ -7,7 +7,7 @@
                 "properties": {
                     "type": "operation",
                     "command": "implant_5",
-                    "cost": 3,
+                    "cost": 1,
                     "parameters": [
                         "Material - w",
                         "BoronMaterial - b",

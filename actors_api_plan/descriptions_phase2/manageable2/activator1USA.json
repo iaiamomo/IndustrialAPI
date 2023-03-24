@@ -1,29 +1,35 @@
 {
-    "id": "developer2usa",
+    "id": "activator1usa",
     "attributes": {
-        "type": "Service_dev2",
+        "type": "Service_act1",
         "actions": {
-            "developing": {
+            "activating": {
                 "properties": {
                     "type": "operation",
-                    "command": "delevop_2",
-                    "cost": 5,
+                    "command": "activate_1",
+                    "cost": 1,
                     "parameters": [
+                        "BoronMaterial - b",
+                        "PhosphorMaterial - p",
+                        "SiliconMaterial - s",
                         "Material - w"
                     ],
                     "requirements": {
                         "positive": [
-                            "w.exposed:true",
-                            "w.developed:false",
+                            "b.implanted:true",
+                            "p.implanted:true",
+                            "s.implanted:true",
+                            "w.implanted:true",
+                            "w.activated:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.developed:true"
+                            "w.activated:true"
                         ],
                         "deleted": [
-                            "w.developed:false"
+                            "w.activated:false"
                         ]
                     }
                 }

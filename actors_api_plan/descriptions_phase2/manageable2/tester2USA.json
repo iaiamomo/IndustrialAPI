@@ -1,29 +1,31 @@
 {
-    "id": "developer2usa",
+    "id": "tester2usa",
     "attributes": {
-        "type": "Service_dev2",
+        "type": "Service_tes2",
         "actions": {
-            "developing": {
+            "testing": {
                 "properties": {
                     "type": "operation",
-                    "command": "delevop_2",
-                    "cost": 5,
+                    "command": "test_2",
+                    "cost": 3,
                     "parameters": [
-                        "Material - w"
+                        "Material - w",
+                        "CopperMaterial - c"
                     ],
                     "requirements": {
                         "positive": [
-                            "w.exposed:true",
-                            "w.developed:false",
+                            "w.assembled:true",
+                            "c.assembled:true",
+                            "w.tested:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.developed:true"
+                            "w.tested:true"
                         ],
                         "deleted": [
-                            "w.developed:false"
+                            "w.tested:false"
                         ]
                     }
                 }

@@ -7,7 +7,7 @@
                 "properties": {
                     "type": "operation",
                     "command": "deposit_5",
-                    "cost": 1,
+                    "cost": 4,
                     "parameters": [
                         "Material - w",
                         "SiliconMaterial - s",

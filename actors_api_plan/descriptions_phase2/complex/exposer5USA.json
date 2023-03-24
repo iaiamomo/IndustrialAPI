@@ -7,7 +7,7 @@
                 "properties": {
                     "type": "operation",
                     "command": "expose_5",
-                    "cost": 1,
+                    "cost": 4,
                     "parameters": [
                         "Material - w",
                         "ResistMaterial - r"

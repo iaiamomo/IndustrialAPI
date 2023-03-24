@@ -1,35 +1,31 @@
 {
-    "id": "activator4usa",
+    "id": "exposer2usa",
     "attributes": {
-        "type": "Service_act4",
+        "type": "Service_exp2",
         "actions": {
-            "activating": {
+            "exposing": {
                 "properties": {
                     "type": "operation",
-                    "command": "activate_4",
-                    "cost": 4,
+                    "command": "expose_2",
+                    "cost": 1,
                     "parameters": [
-                        "BoronMaterial - b",
-                        "PhosphorMaterial - p",
-                        "SiliconMaterial - s",
-                        "Material - w"
+                        "Material - w",
+                        "ResistMaterial - r"
                     ],
                     "requirements": {
                         "positive": [
-                            "b.implanted:true",
-                            "p.implanted:true",
-                            "s.implanted:true",
-                            "w.implanted:true",
-                            "w.activated:false",
+                            "w.coated:true",
+                            "r.coated:true",
+                            "w.exposed:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.activated:true"
+                            "w.exposed:true"
                         ],
                         "deleted": [
-                            "w.activated:false"
+                            "w.exposed:false"
                         ]
                     }
                 }

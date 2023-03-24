@@ -7,7 +7,7 @@
                 "properties": {
                     "type": "operation",
                     "command": "coat_4",
-                    "cost": 5,
+                    "cost": 2,
                     "parameters": [
                         "Material - w",
                         "ResistMaterial - r", 

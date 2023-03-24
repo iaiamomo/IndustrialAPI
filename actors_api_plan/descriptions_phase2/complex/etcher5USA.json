@@ -7,7 +7,7 @@
                 "properties": {
                     "type": "operation",
                     "command": "etch_5",
-                    "cost": 5,
+                    "cost": 4,
                     "parameters": [
                         "Material - w",
                         "ChemicalsMaterial - c"

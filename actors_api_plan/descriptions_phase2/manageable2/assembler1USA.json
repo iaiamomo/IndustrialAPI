@@ -1,29 +1,35 @@
 {
-    "id": "developer2usa",
+    "id": "assembler1usa",
     "attributes": {
-        "type": "Service_dev2",
+        "type": "Service_ass1",
         "actions": {
-            "developing": {
+            "assembling": {
                 "properties": {
                     "type": "operation",
-                    "command": "delevop_2",
+                    "command": "assemble_1",
                     "cost": 5,
                     "parameters": [
-                        "Material - w"
+                        "Material - w",
+                        "CopperMaterial - c",
+                        "ChemicalsMaterial - ch"
                     ],
                     "requirements": {
                         "positive": [
-                            "w.exposed:true",
-                            "w.developed:false",
+                            "w.stripped:true",
+                            "ch.stripped:true",
+                            "w.assembled:false",
+                            "c.assembled:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "w.developed:true"
+                            "w.assembled:true",
+                            "c.assembled:true"
                         ],
                         "deleted": [
-                            "w.developed:false"
+                            "w.assembled:false",
+                            "c.assembled:false"
                         ]
                     }
                 }
