@@ -1,8 +1,8 @@
-# Industrial APIs
+# Industrial API platform
 
-Implementing **Industrial APIs** for industrial actors (devices, machines, humans,...). 
+Implementing **Industrial API** for manufacturing actors (devices, machines, humans,...). 
 
-Follow the following **template** to generate the actors descriptions. The template represents a designer human. The different aspects of the actor are represented as attributes and features. <em>Features</em> represent a state with properties (e.g., <code>status</code>), while <em>attributes</em> (e.g., <code>type</code>, <code>actions</code>, <code>transitions</code>) represent functionalities and values that do not change or that change less frequently than the <em>features</em> property values.
+The following **template** is used to generate the actors descriptions. The different aspects of the actor are represented as attributes and features. <em>Features</em> represent a state with properties (e.g., <code>status</code>), while <em>attributes</em> (e.g., <code>type</code>, <code>actions</code>, <code>transitions</code>) represent functionalities and values that do not change over time.
 ```json
 {
   "id": "<service_name>",
@@ -16,8 +16,15 @@ Follow the following **template** to generate the actors descriptions. The templ
 }
 ```
 
-## Instructions
-Run the server representing a middleware exposing HTTP server and a websocket server:
+## Chip Supply Chain case study
+- The configuration file [conf.json](https://github.com/iaiamomo/IndustrialAPI/tree/main/conf.json) contains the basic information needed to run the platform. The JSON key <code>mode</code> accept only the value <code>plan</code>, the key <code>phase</code> accepts <code>[1,2]</code> values (representing the assortment and manufacturing phases respectively), and the key <code>size</code> accepts <code>[small, manageable1, manageable2, complex]</code> values (related to the number of involved services).
+
+- [actors_api_plan](https://github.com/iaiamomo/IndustrialAPI/tree/main/actors_api_plan) contains the description of the manufacturing actors.
+
+- [context.py](context.py) contains the contextual information.
+
+## How to run the server
+Run the server (a middleware exposing HTTP server and a websocket server):
 ```sh
 python app.py
 ```
@@ -40,4 +47,4 @@ cd actors_api_plan/open_client_script
 ```
 
 ## Note
-If you want to execute Industrial APIs to use MDP orchestrator please make some changes in [app.py](app.py) and [launch_devices.py](launch_devices.py) files.
+In order to execute the Industrial API with the MDP-based controller make some changes in [app.py](app.py) and [launch_devices.py](launch_devices.py) files.
