@@ -1,6 +1,6 @@
 # Industrial API platform
 
-Implementing **Industrial API** for manufacturing actors (devices, machines, humans,...). 
+Implementing **Industrial API** platform for manufacturing actors (devices, machines, humans,...). 
 
 The following **template** is used to generate the actors descriptions. The different aspects of the actor are represented as attributes and features. <em>Features</em> represent a state with properties (e.g., <code>status</code>), while <em>attributes</em> (e.g., <code>type</code>, <code>actions</code>, <code>transitions</code>) represent functionalities and values that do not change over time.
 ```json
