@@ -16,7 +16,7 @@ if __name__ == "__main__":
     processes: List[subprocess.Popen] = []
     
     if phase == 0:
-        list_devices = glob.glob(f"actors_api_{mode}/descriptions_phase{phase}/*.json")
+        list_devices = glob.glob(f"actors_api_{mode}/descriptions_phase{phase}/{size}/*.json")
     elif phase == 1:
         list_devices = glob.glob(f"actors_api_{mode}/descriptions_phase{phase}/*.json")
     elif phase == 2:

@@ -1,0 +1,49 @@
+{
+    "id": "creator2usa",
+    "attributes": {
+        "type": "Service_cre2",
+        "actions": {
+            "mask_creating": {
+                "properties": {
+                    "type": "operation",
+                    "command": "mask_create_2",
+                    "cost": 1,
+                    "parameters": [
+                        "SiliconMaterial - s",
+                        "Design - d",
+                        "ChipMaterial - c"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "s.taken:true",
+                            "d.masked:false",
+                            "s.masked:false",
+                            "c.masked:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "d.masked:true",
+                            "s.masked:true",
+                            "c.masked:true"
+                        ],
+                        "deleted": [
+                            "d.masked:false",
+                            "s.masked:false",
+                            "c.masked:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

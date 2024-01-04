@@ -1,0 +1,44 @@
+{
+    "id": "lithographer2usa",
+    "attributes": {
+        "type": "Service_lit2",
+        "actions": {
+            "photolithography": {
+                "properties": {
+                    "type": "operation",
+                    "command": "photolithograph_2",
+                    "cost": 5,
+                    "parameters": [
+                        "SiliconMaterial - s",
+                        "ChipMaterial - c"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "c.masked:true",
+                            "s.lithographed:false",
+                            "c.lithographed:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "s.lithographed:true",
+                            "c.lithographed:true"
+                        ],
+                        "deleted": [
+                            "s.lithographed:false",
+                            "c.lithographed:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

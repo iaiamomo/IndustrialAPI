@@ -1,33 +1,28 @@
 {
-    "id": "lithographer1usa",
+    "id": "designertaiwan",
     "attributes": {
-        "type": "Service_lit1",
+        "type": "Service_des_tw",
         "actions": {
-            "photolithography": {
+            "taking_design": {
                 "properties": {
                     "type": "operation",
-                    "command": "photolithograph",
-                    "cost": 5,
+                    "command": "take_design_tw",
+                    "cost": 12,
                     "parameters": [
-                        "SiliconMaterial - s",
-                        "ChipMaterial - c"
+                        "Design - o"
                     ],
                     "requirements": {
                         "positive": [
-                            "c.masked:true",
-                            "s.lithographed:false",
-                            "c.lithographed:false",
+                            "o.taken:false",
                             "status:available"
                         ]
                     },
                     "effects": {
                         "added": [
-                            "s.lithographed:true",
-                            "c.lithographed:true"
+                            "o.taken:true"
                         ],
                         "deleted": [
-                            "s.lithographed:false",
-                            "c.lithographed:false"
+                            "o.taken:false"
                         ]
                     }
                 }
