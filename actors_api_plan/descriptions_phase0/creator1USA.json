@@ -30,7 +30,7 @@
                             "c.masked:true"
                         ],
                         "deleted": [
-                            "w.masked:false",
+                            "d.masked:false",
                             "s.masked:false",
                             "c.masked:false"
                         ]

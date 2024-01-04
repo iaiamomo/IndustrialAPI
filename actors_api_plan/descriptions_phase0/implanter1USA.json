@@ -17,10 +17,10 @@
                     "requirements": {
                         "positive": [
                             "s.lithographed:true",
-                            "s.implanted:false",
                             "b.taken:true",
                             "p.taken:true",
                             "c.taken:true",
+                            "s.implanted:false",
                             "b.implanted:false",
                             "p.implanted:false",
                             "c.implanted:false",

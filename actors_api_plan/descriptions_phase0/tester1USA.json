@@ -20,10 +20,10 @@
                     },
                     "effects": {
                         "added": [
-                            "w.tested:true"
+                            "a.tested:true"
                         ],
                         "deleted": [
-                            "w.tested:false"
+                            "a.tested:false"
                         ]
                     }
                 }
