@@ -1,0 +1,55 @@
+{
+    "id": "implanter1usa",
+    "attributes": {
+        "type": "Service_imp1",
+        "actions": {
+            "implanting": {
+                "properties": {
+                    "type": "operation",
+                    "command": "implant_1",
+                    "cost": 5,
+                    "parameters": [
+                        "ChipMaterial - s",
+                        "ImpurityMaterial - b",
+                        "ResistMaterial - p",
+                        "ChemicalsMaterial - c"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "s.lithographed:true",
+                            "s.implanted:false",
+                            "b.taken:true",
+                            "p.taken:true",
+                            "c.taken:true",
+                            "b.implanted:false",
+                            "p.implanted:false",
+                            "c.implanted:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "s.implanted:true",
+                            "b.implanted:true",
+                            "p.implanted:true",
+                            "c.implanted:true"
+                        ],
+                        "deleted": [
+                            "s.implanted:false",
+                            "b.implanted:false",
+                            "p.implanted:false",
+                            "c.implanted:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}
