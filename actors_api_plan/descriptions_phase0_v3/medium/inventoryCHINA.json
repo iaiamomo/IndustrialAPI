@@ -1,0 +1,41 @@
+{
+    "id": "inventorychina",
+    "attributes": {
+        "type": "Service_inv_cn",
+        "actions": {
+            "taking_silicon": {
+                "properties": {
+                    "type": "operation",
+                    "command": "take_silicon_cn",
+                    "cost": 11,
+                    "parameters": [
+                        "Design - d",
+                        "SiliconMaterial - s"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "d.taken:true",
+                            "s.taken:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "s.taken:true"
+                        ],
+                        "deleted": [
+                            "s.taken:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}
