@@ -1,0 +1,38 @@
+{
+    "id": "chip",
+    "attributes": {
+        "type": "ChipMaterial"
+    },
+    "features": {
+        "masked": {
+            "properties": {
+                "value": "false"
+            }
+        },
+        "lithographed": {
+            "properties": {
+                "value": "false"
+            }
+        },
+        "implanted": {
+            "properties": {
+                "value": "false"
+            }
+        },
+        "tested": {
+            "properties": {
+                "value": "false"
+            }
+        },
+        "diced": {
+            "properties": {
+                "value": "false"
+            }
+        },
+        "packed": {
+            "properties": {
+                "value": "false"
+            }
+        }
+    }
+}

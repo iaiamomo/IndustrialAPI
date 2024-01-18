@@ -1,0 +1,40 @@
+{
+    "id": "dicer2usa",
+    "attributes": {
+        "type": "Service_dic2",
+        "actions": {
+            "dicing": {
+                "properties": {
+                    "type": "operation",
+                    "command": "dic_2",
+                    "cost": 1,
+                    "parameters": [
+                        "ChipMaterial - w"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "w.tested:true",
+                            "w.diced:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "w.diced:true"
+                        ],
+                        "deleted": [
+                            "w.diced:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}
