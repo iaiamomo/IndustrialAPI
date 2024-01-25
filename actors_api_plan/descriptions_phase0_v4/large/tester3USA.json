@@ -1,0 +1,40 @@
+{
+    "id": "tester3usa",
+    "attributes": {
+        "type": "Service_tes3",
+        "actions": {
+            "testing": {
+                "properties": {
+                    "type": "operation",
+                    "command": "test_3",
+                    "cost": 7,
+                    "parameters": [
+                        "ChipMaterial - a"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "a.implanted:true",
+                            "a.tested:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "a.tested:true"
+                        ],
+                        "deleted": [
+                            "a.tested:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

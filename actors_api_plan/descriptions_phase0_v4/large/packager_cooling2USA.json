@@ -1,0 +1,40 @@
+{
+    "id": "packager_cooling2usa",
+    "attributes": {
+        "type": "Service_pac_cool2",
+        "actions": {
+            "packaging_cooling": {
+                "properties": {
+                    "type": "operation",
+                    "command": "pack_cool_2",
+                    "cost": 4,
+                    "parameters": [
+                        "ChipMaterial - w"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "w.diced:true",
+                            "w.packed_cool:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "w.packed_cool:true"
+                        ],
+                        "deleted": [
+                            "w.packed_cool:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

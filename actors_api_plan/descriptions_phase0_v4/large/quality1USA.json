@@ -1,0 +1,40 @@
+{
+    "id": "quality1usa",
+    "attributes": {
+        "type": "Service_qua1",
+        "actions": {
+            "checking_quality": {
+                "properties": {
+                    "type": "operation",
+                    "command": "qua_1",
+                    "cost": 5,
+                    "parameters": [
+                        "ChipMaterial - a"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "a.smart_tested:true",
+                            "a.quality_checked:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "a.quality_checked:true"
+                        ],
+                        "deleted": [
+                            "a.quality_checked:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

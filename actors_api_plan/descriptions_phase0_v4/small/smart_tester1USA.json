@@ -1,0 +1,40 @@
+{
+    "id": "smarttester1usa",
+    "attributes": {
+        "type": "Service_sma_tes1",
+        "actions": {
+            "smart_testing": {
+                "properties": {
+                    "type": "operation",
+                    "command": "sma_test_1",
+                    "cost": 5,
+                    "parameters": [
+                        "ChipMaterial - a"
+                    ],
+                    "requirements": {
+                        "positive": [
+                            "a.implanted:true",
+                            "a.smart_tested:false",
+                            "status:available"
+                        ]
+                    },
+                    "effects": {
+                        "added": [
+                            "a.smart_tested:true"
+                        ],
+                        "deleted": [
+                            "a.smart_tested:false"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "features": {
+        "status":{
+            "properties": {
+                "value": "available"
+            }
+        }
+    }
+}

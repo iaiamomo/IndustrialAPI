@@ -1,0 +1,18 @@
+{
+    "id": "design",
+    "attributes": {
+        "type": "Design"
+    },
+    "features": {
+        "taken": {
+            "properties": {
+                "value": "false"
+            }
+        },
+        "masked": {
+            "properties": {
+                "value": "false"
+            }
+        }
+    }
+}
